@@ -1,0 +1,53 @@
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#14161f;color:#f2f4f8;
+  font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans JP","Noto Sans CJK JP",sans-serif;
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+canvas{display:block;width:100%;height:100%;touch-action:none}
+.hidden{display:none!important}
+#hud{position:fixed;left:0;right:0;top:0;display:flex;align-items:flex-start;justify-content:space-between;
+  padding:max(8px,env(safe-area-inset-top)) 10px 0;pointer-events:none;gap:8px}
+.hud-left{display:flex;flex-direction:column;gap:6px;min-width:96px}
+.hud-right{min-width:96px}
+.pill{display:inline-flex;align-items:baseline;gap:6px;background:rgba(12,13,20,.62);border:1px solid rgba(255,255,255,.08);
+  border-radius:999px;padding:4px 12px;width:max-content;backdrop-filter:blur(4px)}
+.pill .lbl{font-size:11px;color:#a4a9b8;font-weight:700}
+.pill b{font-size:20px;font-weight:900;font-variant-numeric:tabular-nums;color:#9df58f}
+.pill.horde b{font-size:15px;color:#f2f4f8}
+.pill.bump b{animation:bump .18s ease-out}
+@keyframes bump{0%{transform:scale(1.35)}100%{transform:scale(1)}}
+.hud-center{text-align:center;padding-top:2px}
+#hudTime{font-size:26px;font-weight:900;font-variant-numeric:tabular-nums;text-shadow:0 2px 0 rgba(0,0,0,.45)}
+#hudTime.warn{color:#ff6b7d;animation:pulse .5s ease-in-out infinite alternate}
+@keyframes pulse{to{transform:scale(1.15)}}
+.tbar{width:110px;height:5px;border-radius:9px;background:rgba(255,255,255,.12);overflow:hidden;margin:3px auto 0}
+.tbar i{display:block;height:100%;width:100%;background:#7c5cff;transform-origin:left;border-radius:9px}
+.icon-btn{position:fixed;right:10px;top:max(8px,env(safe-area-inset-top));z-index:20;width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.12);background:rgba(12,13,20,.62);color:#f2f4f8;display:grid;place-items:center;cursor:pointer}
+.icon-btn:active{transform:scale(.92)}
+.overlay{position:fixed;inset:0;display:grid;place-items:center;background:rgba(10,11,17,.55);z-index:10;padding:16px;animation:fade .25s ease-out}
+@keyframes fade{from{opacity:0}}
+.panel{width:min(340px,100%);background:#1b1e2a;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:22px 20px 18px;text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);animation:pop .35s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.85);opacity:0}}
+.logo{display:flex;flex-direction:column;line-height:1;font-weight:900;letter-spacing:.02em;margin-bottom:14px}
+.logo span:first-child{font-size:40px;color:#9df58f;text-shadow:0 4px 0 #2f6b3a}
+.logo span:last-child{font-size:30px;color:#f2f4f8;text-shadow:0 3px 0 #4a3a8f}
+.howto{list-style:none;text-align:left;display:flex;flex-direction:column;gap:9px;margin:6px 4px 18px;font-size:14px;font-weight:700}
+.howto small{color:#a4a9b8;font-weight:500}
+.howto li{display:flex;gap:10px;align-items:flex-start}
+.dot{flex:none;width:16px;height:16px;border-radius:50%;margin-top:1px;border:2px solid rgba(0,0,0,.35)}
+.dot.z{background:#8de07f}.dot.h{background:#ffb35c}.dot.p{background:#4d8bff}.dot.t{background:#7c5cff}
+.big-btn{width:100%;border:0;border-radius:999px;padding:14px;font-size:20px;font-weight:900;color:#fff;cursor:pointer;
+  background:#7c5cff;box-shadow:0 5px 0 #4a34b8;font-family:inherit}
+.big-btn:active{transform:translateY(3px);box-shadow:0 2px 0 #4a34b8}
+.best{margin-top:12px;color:#a4a9b8;font-size:13px}.best b{color:#f2f4f8}
+.over-title{font-size:26px;font-weight:900;margin-bottom:6px}
+.over-label{color:#a4a9b8;font-size:13px}
+.over-score{font-size:64px;font-weight:900;color:#9df58f;line-height:1.1;font-variant-numeric:tabular-nums}
+.new-best{display:inline-block;background:#ffcf4a;color:#3a2a00;font-weight:900;border-radius:999px;padding:3px 12px;font-size:13px;animation:pulse .6s ease-in-out infinite alternate}
+.stats{display:grid;gap:6px;margin:14px 0 18px;font-size:14px}
+.stats div{display:flex;justify-content:space-between;background:#232738;border-radius:10px;padding:7px 12px}
+.stats span{color:#a4a9b8}
+body.demo #hud,body.demo .icon-btn,body.demo .overlay{display:none!important}
+#hudTime.hit{animation:hit .5s ease-out}
+@keyframes hit{0%{color:#ff3b55;transform:scale(1.5)}100%{transform:scale(1)}}

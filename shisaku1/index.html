@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>ゾンビメーカー</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="game" aria-label="ゾンビメーカーのゲーム画面"></canvas>
+
+<div id="hud" class="hidden">
+  <div class="hud-left">
+    <div class="pill score"><span class="lbl">感染</span><b id="hudScore">0</b></div>
+    <div class="pill horde"><span class="lbl">群れ</span><b id="hudHorde">1</b></div>
+  </div>
+  <div class="hud-center">
+    <div id="hudTime">60</div>
+    <div class="tbar"><i id="hudBar"></i></div>
+  </div>
+  <div class="hud-right"></div>
+</div>
+
+<button id="muteBtn" class="icon-btn" aria-label="音のオン/オフ" title="音のオン/オフ">
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M4 9h4l5-4v14l-5-4H4z"/><path id="muteWave" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 9c1.3 1.6 1.3 4.4 0 6M18.5 6.5c2.8 3 2.8 8 0 11"/><path id="muteX" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M16 9l5 6M21 9l-5 6"/></svg>
+</button>
+
+<div id="startScreen" class="overlay hidden">
+  <div class="panel">
+    <div class="logo"><span>ゾンビ</span><span>メーカー</span></div>
+    <ul class="howto">
+      <li><i class="dot z"></i><span>ドラッグで移動</span></li>
+      <li><i class="dot h"></i><span>人にふれると仲間になる</span></li>
+      <li><i class="dot p"></i><span>警官・兵士は<b>群れで囲めば</b>倒せる<br><small>囲みが足りないと仲間が減る</small></span></li>
+      <li><i class="dot t"></i><span>60秒でどれだけ増やせる？</span></li>
+    </ul>
+    <button id="startBtn" class="big-btn">スタート</button>
+    <div class="best">ベスト <b id="startBest">0</b></div>
+  </div>
+</div>
+
+<div id="overScreen" class="overlay hidden">
+  <div class="panel">
+    <div id="overTitle" class="over-title">タイムアップ！</div>
+    <div class="over-label">感染させた人数</div>
+    <div id="overScore" class="over-score">0</div>
+    <div id="newBest" class="new-best hidden">NEW BEST!</div>
+    <div class="stats">
+      <div><span>ベスト</span><b id="overBest">0</b></div>
+      <div><span>最大の群れ</span><b id="overMaxHorde">0</b></div>
+      <div><span>倒した警官・兵士</span><b id="overEnemies">0</b></div>
+    </div>
+    <button id="retryBtn" class="big-btn">もう一度</button>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
