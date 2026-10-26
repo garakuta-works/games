@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>ゆらゆら ゆりかご合体（プロトタイプ）</title>
+<style>
+  html,body{margin:0;height:100%;background:#fff5e8;font-family:"Hiragino Maru Gothic ProN","Rounded Mplus 1c",system-ui,sans-serif;overflow:hidden;touch-action:none;user-select:none}
+  #wrap{display:flex;flex-direction:column;align-items:center;height:100%}
+  #hud{display:flex;gap:14px;align-items:center;padding:8px 10px;font-weight:bold;color:#7a4a2a;font-size:15px}
+  #hud .box{background:#fff;border-radius:12px;padding:4px 10px;box-shadow:0 2px 0 #f0d2b0}
+  canvas{display:block;max-width:100%;touch-action:none}
+  #over{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(80,40,20,.45)}
+  #over .card{background:#fff;border-radius:18px;padding:20px 24px;text-align:center;color:#7a4a2a;max-width:300px}
+  button{font:inherit;font-weight:bold;border:0;border-radius:12px;padding:10px 16px;margin:6px;background:#ff9d6c;color:#fff;cursor:pointer}
+  button.sub{background:#c9a98a}
+  #chart{font-size:11px;color:#9a7a5a;padding:4px 8px;text-align:center;max-width:420px;line-height:1.5}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="hud">
+    <div class="box">スコア <span id="score">0</span></div>
+    <div class="box">ベスト <span id="best">0</span></div>
+    <div class="box">つぎ <span id="next">-</span></div>
+  </div>
+  <canvas id="c" width="420" height="600"></canvas>
+  <div id="chart"></div>
+</div>
+<div id="over"><div class="card">
+  <div style="font-size:20px;margin-bottom:6px">ゆりかご あふれちゃった！</div>
+  <div id="result"></div>
+  <button id="retry">もういちど</button>
+  <button id="copy" class="sub">結果をコピー</button>
+  <div id="copied" style="font-size:12px;height:16px"></div>
+</div></div>
+<script>
+// ===== 設定 =====
+// 成長段階（同じ段階どうしがくっつくと次の段階へ）
+const STAGES = [
+  {n:'あかちゃん',   r:15, c:'#ffd6e0'},
+  {n:'よちよち',     r:20, c:'#ffe7a8'},
+  {n:'ようちえん',   r:26, c:'#c8f0b4'},
+  {n:'しょうがくせい',r:33, c:'#a8e0ff'},
+  {n:'ちゅうがくせい',r:40, c:'#c9c2ff'},
+  {n:'こうこうせい', r:48, c:'#ffb8a8'},
+  {n:'だいがくせい', r:57, c:'#ffcf8a'},
+  {n:'しゃかいじん', r:66, c:'#9fe3d2'},
+  {n:'パパ・ママ',   r:76, c:'#f7a8d8'},
+  {n:'おじいちゃん・おばあちゃん', r:87, c:'#e8e0c8'},
+  {n:'でんせつの長老', r:99, c:'#ffe066'}
+];
+const W=420,H=600;
+const BOX={x:55,y:100,w:310,h:440}; // ゆりかご内部（ローカル座標）
+const DEAD_Y=BOX.y+8;               // この線より上に居続けるとアウト
+const G=900;                        // 重力
+const TILT_MAX=0.12;                // ゆりかごの最大傾き(rad)
+const TILT_PERIOD=9;                // 揺れ周期(秒)
+
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');
+let balls=[],score=0,best=+(localStorage.getItem('yurikago_best')||0),cur,nxt,aimX=W/2,canDrop=true,over=false,t=0,maxStage=0,pops=[];
+const params=new URLSearchParams(location.search);
+let seed=+(params.get('seed')||Date.now()%100000);
+function rnd(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646;}
+function pick(){return Math.floor(rnd()*4);} // 出てくるのは最初の4段階まで
+document.getElementById('best').textContent=best;
+document.getElementById('chart').textContent='成長: '+STAGES.map(s=>s.n).join(' → ');
+
+// ===== 音（WebAudio。外部素材なし） =====
+let ac=null;
+function beep(f,d=0.08,type='sine',v=0.08){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=f;g.gain.value=v;o.connect(g);g.connect(ac.destination);o.start();g.gain.exponentialRampToValueAtTime(0.0001,ac.currentTime+d);o.stop(ac.currentTime+d);}catch(e){}}
+
+function tilt(){return Math.sin(t*2*Math.PI/TILT_PERIOD)*TILT_MAX*Math.min(1,0.3+maxStage*0.12);}
+
+function reset(){balls=[];score=0;over=false;t=0;maxStage=0;pops=[];cur=pick();nxt=pick();canDrop=true;
+  document.getElementById('over').style.display='none';updHud();}
+function updHud(){document.getElementById('score').textContent=score;document.getElementById('next').textContent=STAGES[nxt].n;}
+
+function drop(){ if(!canDrop||over) return; const r=STAGES[cur].r;
+  const x=Math.max(BOX.x+r,Math.min(BOX.x+BOX.w-r,aimX));
+  balls.push({x,y:BOX.y-r-6,vx:0,vy:0,s:cur,r,id:Math.random(),born:t,above:0});
+  beep(520,0.06,'triangle');
+  cur=nxt;nxt=pick();canDrop=false;setTimeout(()=>canDrop=true,450);updHud();}
+
+// ===== 物理（円だけの簡易物理） =====
+function step(dt){
+  t+=dt;
+  const a=tilt();
+  // ゆりかごの座標系での重力（ゆりかごが傾く＝重力が横にずれる）
+  const gx=Math.sin(-a)*G*-1, gy=Math.cos(a)*G;
+  for(const b of balls){ b.vx+=gx*dt; b.vy+=gy*dt; b.vx*=0.995; b.vy*=0.995; b.x+=b.vx*dt; b.y+=b.vy*dt; }
+  for(let it=0;it<4;it++){
+    // 壁
+    for(const b of balls){
+      if(b.x-b.r<BOX.x){b.x=BOX.x+b.r;b.vx*=-0.2;}
+      if(b.x+b.r>BOX.x+BOX.w){b.x=BOX.x+BOX.w-b.r;b.vx*=-0.2;}
+      if(b.y+b.r>BOX.y+BOX.h){b.y=BOX.y+BOX.h-b.r;b.vy*=-0.2;b.vx*=0.98;}
+    }
+    // 円どうし
+    for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){
+      const p=balls[i],q=balls[j];if(p.dead||q.dead)continue;
+      const dx=q.x-p.x,dy=q.y-p.y,d=Math.hypot(dx,dy)||0.01,m=p.r+q.r;
+      if(d<m){
+        if(p.s===q.s&&p.s<STAGES.length-1){ merge(p,q); continue; }
+        const nx=dx/d,ny=dy/d,ov=(m-d);
+        const mp=p.r*p.r,mq=q.r*q.r,tot=mp+mq;
+        p.x-=nx*ov*mq/tot;p.y-=ny*ov*mq/tot;q.x+=nx*ov*mp/tot;q.y+=ny*ov*mp/tot;
+        const rv=(q.vx-p.vx)*nx+(q.vy-p.vy)*ny;
+        if(rv<0){const imp=-(1.2)*rv/(1/mp+1/mq);p.vx-=imp*nx/mp;p.vy-=imp*ny/mp;q.vx+=imp*nx/mq;q.vy+=imp*ny/mq;}
+      }
+    }
+    balls=balls.filter(b=>!b.dead);
+  }
+  // ゲームオーバー判定：線より上に1.5秒以上
+  for(const b of balls){
+    if(t-b.born>1.2 && b.y-b.r<DEAD_Y){ b.above+=dt; if(b.above>1.5) gameOver(); } else b.above=0;
+  }
+  pops=pops.filter(p=>(p.life-=dt)>0);
+}
+function merge(p,q){
+  p.dead=q.dead=true;const s=p.s+1;
+  const nb={x:(p.x+q.x)/2,y:(p.y+q.y)/2,vx:(p.vx+q.vx)/2,vy:(p.vy+q.vy)/2-60,s,r:STAGES[s].r,id:Math.random(),born:t,above:0};
+  balls.push(nb);
+  const gain=(s+1)*(s+2)/2; score+=gain;
+  if(s>maxStage)maxStage=s;
+  pops.push({x:nb.x,y:nb.y,txt:STAGES[s].n+'！ +'+gain,life:1.0});
+  beep(300+s*70,0.15,'sine',0.1);
+  updHud();
+}
+function gameOver(){ if(over)return; over=true;
+  if(score>best){best=score;localStorage.setItem('yurikago_best',best);document.getElementById('best').textContent=best;}
+  document.getElementById('result').innerHTML='スコア <b>'+score+'</b><br>いちばん育ったのは<br><b style="font-size:18px">'+STAGES[maxStage].n+'</b>';
+  document.getElementById('over').style.display='flex'; beep(200,0.4,'sawtooth',0.06);
+  document.title='GAMEOVER score='+score+' max='+maxStage;
+}
+
+// ===== 描画 =====
+function face(b){
+  const s=STAGES[b.s];
+  ctx.fillStyle=s.c;ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,7);ctx.fill();
+  ctx.lineWidth=2;ctx.strokeStyle='rgba(120,70,40,.35)';ctx.stroke();
+  // 顔：段階が上がるほど髪・ひげなどの記号が増える
+  const e=b.r*0.32,ey=b.y-b.r*0.1;
+  ctx.fillStyle='#5a3a2a';
+  ctx.beginPath();ctx.arc(b.x-e,ey,Math.max(1.5,b.r*0.08),0,7);ctx.arc(b.x+e,ey,Math.max(1.5,b.r*0.08),0,7);ctx.fill();
+  ctx.strokeStyle='#5a3a2a';ctx.lineWidth=Math.max(1.5,b.r*0.06);
+  ctx.beginPath();ctx.arc(b.x,b.y+b.r*0.15,b.r*0.25,0.15*Math.PI,0.85*Math.PI);ctx.stroke();
+  ctx.fillStyle='rgba(255,120,120,.35)';
+  ctx.beginPath();ctx.arc(b.x-e*1.5,b.y+b.r*0.12,b.r*0.12,0,7);ctx.arc(b.x+e*1.5,b.y+b.r*0.12,b.r*0.12,0,7);ctx.fill();
+  if(b.s===0){ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(b.x,b.y+b.r*0.55,b.r*0.18,0,7);ctx.fill();} // おしゃぶり
+  if(b.s>=3&&b.s<=6){ctx.fillStyle='#6b4a32';ctx.beginPath();ctx.arc(b.x,b.y-b.r*0.55,b.r*0.55,Math.PI,2*Math.PI);ctx.fill();}
+  if(b.s>=7&&b.s<=8){ctx.fillStyle='#3a2a20';ctx.beginPath();ctx.arc(b.x,b.y-b.r*0.6,b.r*0.6,Math.PI*1.05,Math.PI*1.95);ctx.fill();}
+  if(b.s===9){ctx.strokeStyle='#888';ctx.lineWidth=2;ctx.beginPath();ctx.arc(b.x-e,ey,b.r*0.14,0,7);ctx.arc(b.x+e,ey,b.r*0.14,0,7);ctx.stroke();}
+  if(b.s===10){ctx.fillStyle='#fff';ctx.beginPath();ctx.moveTo(b.x-b.r*0.3,b.y+b.r*0.3);ctx.lineTo(b.x+b.r*0.3,b.y+b.r*0.3);ctx.lineTo(b.x,b.y+b.r*0.95);ctx.fill();
+    ctx.strokeStyle='#ffb000';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(b.x,b.y-b.r*1.05,b.r*0.5,b.r*0.12,0,0,7);ctx.stroke();}
+  if(b.r>=26){ctx.fillStyle='rgba(90,58,42,.8)';ctx.font='bold '+Math.min(13,b.r*0.28)+'px sans-serif';ctx.textAlign='center';ctx.fillText(s.n,b.x,b.y+b.r*0.78>b.y+b.r-4?b.y+b.r-6:b.y+b.r*0.78);}
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  const a=tilt(),cx=BOX.x+BOX.w/2,cy=BOX.y+BOX.h;
+  ctx.save();ctx.translate(cx,cy);ctx.rotate(a);ctx.translate(-cx,-cy);
+  // ゆりかご
+  ctx.fillStyle='#fffaf2';ctx.fillRect(BOX.x,BOX.y,BOX.w,BOX.h);
+  ctx.strokeStyle='#c98b5a';ctx.lineWidth=10;ctx.lineCap='round';
+  ctx.beginPath();ctx.moveTo(BOX.x-5,BOX.y);ctx.lineTo(BOX.x-5,BOX.y+BOX.h+5);ctx.lineTo(BOX.x+BOX.w+5,BOX.y+BOX.h+5);ctx.lineTo(BOX.x+BOX.w+5,BOX.y);ctx.stroke();
+  ctx.strokeStyle='#c98b5a';ctx.lineWidth=8;ctx.beginPath();ctx.arc(cx,cy-250,300,Math.PI*0.33,Math.PI*0.67);ctx.stroke(); // ゆりかごの脚
+  ctx.setLineDash([6,6]);ctx.strokeStyle='rgba(255,90,90,.6)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(BOX.x,DEAD_Y);ctx.lineTo(BOX.x+BOX.w,DEAD_Y);ctx.stroke();ctx.setLineDash([]);
+  // 照準
+  if(!over){const r=STAGES[cur].r,x=Math.max(BOX.x+r,Math.min(BOX.x+BOX.w-r,aimX));
+    ctx.strokeStyle='rgba(120,70,40,.25)';ctx.beginPath();ctx.moveTo(x,BOX.y-r);ctx.lineTo(x,BOX.y+BOX.h);ctx.stroke();
+    if(canDrop) face({x,y:BOX.y-r-6,s:cur,r});}
+  for(const b of balls) face(b);
+  for(const p of pops){ctx.globalAlpha=Math.min(1,p.life*2);ctx.fillStyle='#e0603a';ctx.font='bold 15px sans-serif';ctx.textAlign='center';ctx.fillText(p.txt,p.x,p.y-(1-p.life)*40);ctx.globalAlpha=1;}
+  ctx.restore();
+  ctx.fillStyle='#7a4a2a';ctx.font='bold 13px sans-serif';ctx.textAlign='center';
+  ctx.fillText('同じ子どうしをくっつけて育てよう！ ゆりかごは ゆれるよ',W/2,28);
+}
+
+// ===== 入力 =====
+function toLocal(ev){const rc=cv.getBoundingClientRect();return (ev.clientX-rc.left)*W/rc.width;}
+cv.addEventListener('pointermove',e=>{aimX=toLocal(e);});
+cv.addEventListener('pointerdown',e=>{aimX=toLocal(e);});
+cv.addEventListener('pointerup',e=>{aimX=toLocal(e);drop();});
+window.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')aimX-=20;if(e.key==='ArrowRight')aimX+=20;if(e.key===' ')drop();});
+document.getElementById('retry').onclick=reset;
+document.getElementById('copy').onclick=()=>{
+  const txt='【ゆらゆら ゆりかご合体】スコア'+score+'／「'+STAGES[maxStage].n+'」まで育てた！';
+  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>document.getElementById('copied').textContent='コピーしました（投稿はしません）')
+  .catch(()=>{document.getElementById('copied').textContent=txt;});
+};
+
+// ===== ループ =====
+let last=performance.now();
+function loop(now){const dt=Math.min(0.033,(now-last)/1000);last=now;
+  if(!over){step(dt/2);step(dt/2);} draw(); requestAnimationFrame(loop);}
+reset();requestAnimationFrame(loop);
+
+// ===== 自動テスト（?autotest=1 のときだけ。ランダムに落とし続けて結果をtitleに出す） =====
+if(params.get('autotest')){
+  let n=0;const iv=setInterval(()=>{ if(over){clearInterval(iv);return;}
+    aimX=BOX.x+rnd()*BOX.w; canDrop=true; drop(); n++;
+    document.title='RUN drops='+n+' balls='+balls.length+' score='+score+' max='+maxStage;
+  },120);
+  // rAFが止まる環境向けに固定ステップでも進める
+  setInterval(()=>{ if(!over){for(let i=0;i<4;i++)step(1/120);} },16);
+}
+</script>
+</body>
+</html>
