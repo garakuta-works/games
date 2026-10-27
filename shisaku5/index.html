@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>試作</title><!-- 題名は下の TITLE_KEY から applyTitle() が入れる -->
+<title>試作5</title>
 <style>
 :root{--bg:#120a22;--ink:#2b1d3f;--card:#fff8ee;--rim:#f3d9a8;--accent:#ff5d3a;--accentDark:#b8331b;--sub:#8a6f5a;--subbtn:#7d6a9c;--subbtnDark:#4f3f6b;--howbg:#f7ead6;--logo1:#ffe27a;--logo2:#ff6a3d;--logoShadow:#7a1f12}
 html,body{margin:0;height:100%;background:var(--bg);font-family:"Hiragino Maru Gothic ProN","Rounded Mplus 1c","M PLUS Rounded 1c","Noto Sans CJK JP",system-ui,sans-serif;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;color:var(--ink)}
@@ -63,7 +63,6 @@ html,body{background:linear-gradient(180deg,#3a0814 0%,#2a0a1c 16%,#160a22 55%,#
 
 <div id="start" class="ov"><div class="card pop">
   <button id="bGear" class="gear" aria-label="設定" data-i18n-aria="settings">⚙</button>
-  <div class="logo long" id="logo"></div>
   <div class="tag" id="tagline"></div>
   <ul class="how">
     <li data-i="1" data-i18n="how1">物を<b>タップ</b>すると、吊り手がはなす</li>
@@ -186,11 +185,11 @@ const FX={parts:[],texts:[],rings:[],shakeT:0,shakeA:0,flashA:0,flashCol:'#fff',
 };
 function copyText(t,msgEl){(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>msgEl.textContent='コピーしました（どこにも投稿していません）').catch(()=>msgEl.textContent=t);}
 
-// ================= 題名設定（差し替えはこの1行だけ。日本語と英語（仮訳）の両方がここで決まる） =================
-const TITLE_KEY='ochiru';   // 仮題
+// ================= 見出し下の一言・判定ラベル・称号（題名は画面に出さない） =================
+const TITLE_KEY='ochiru';
 const TITLES={
-  ochiru:{name:'おちるまで、いっしょ',logo:'おちるまで、<br>いっしょ',long:true,tag:'ぜんぶ　いっしょに　床へ',perfect:'いっしょ!!',master:'いっしょ名人',share:'💥おちるまで、いっしょ',
-    en:{name:'Land Together',logo:'Land<br>Together',long:true,tag:'all together, to the floor',perfect:'Together!!',master:'Together Master',share:'💥Land Together'}}};   // en は仮訳（未確定）
+  ochiru:{tag:'ぜんぶ　いっしょに　床へ',perfect:'いっしょ!!',master:'いっしょ名人',
+    en:{tag:'all together, to the floor',perfect:'Together!!',master:'Together Master'}}};   // en は仮訳（未確定）
 const TITLE=TITLES[TITLE_KEY];
 // ===== 共通：ことばの切り替え（日本語が既定。英語は設定の歯車から。?lang=en は確認用で保存しない） =====
 // 使い方：I18NKIT.init('<ゲーム名>', {ja:{...}, en:{...}}) のあと tx('key',{n:1}) で文字列。HTML は data-i18n="key"（innerHTML）/ data-i18n-aria="key"
@@ -210,7 +209,7 @@ function copyTextI18n(t,msgEl){(navigator.clipboard?navigator.clipboard.writeTex
 
 // ================= ことば（日本語が既定。ja は元の文言そのまま／en は仮訳） =================
 // 英語の題名は未確定の仮訳
-const TITLE_EN=TITLE.en;   // 英語の題名（仮訳）は上の TITLES の en から
+const TITLE_EN=TITLE.en;   // 英語（仮訳）は上の TITLES の en から
 const curTitle=()=>I18NKIT.lang==='en'?TITLE_EN:TITLE;
 const I18N={
  ja:{rotate_msg:'スマホを縦にして遊んでね',rotate_sub:'このゲームは縦長の画面用です',settings:'設定',settings_title:'設定',lang_label:'ことば / Language',close:'とじる',
@@ -562,7 +561,7 @@ function countUp(target){const el=$('rScore').querySelector('b');const t0=perfor
   (function step(){const k=Math.min(1,(performance.now()-t0)/D),v=Math.round(target*easeOut(k));el.textContent=v;
     if(performance.now()-lastTick>70&&k<1){lastTick=performance.now();SND.tone({f:1200+k*600,type:'square',dur:.02,vol:.015,wet:0});}
     if(k<1)requestAnimationFrame(step);})();}
-function applyTitle(){const T=curTitle();document.title=T.name+tx('suffix');$('logo').innerHTML=T.logo;$('logo').classList.toggle('long',!!T.long);$('tagline').textContent=T.tag;}
+function applyTitle(){const T=curTitle();document.title='試作5';$('tagline').textContent=T.tag;}
 I18NKIT.init('wandon',I18N);applyTitle();
 let AMB=null;function ambience(){if(AUTOTEST||AMB)return;AMB=SND.loop({freq:58,noiseFreq:320,vol:.012});}   // 劇場のざわめき（ごく小さく）
 function showStart(){$('start').style.display='flex';$('over').style.display='none';
@@ -571,7 +570,7 @@ function showStart(){$('start').style.display='flex';$('over').style.display='no
 function start(mode){SND.init();ambience();const seed=mode==='daily'?todaySeed():(Date.now()%1e9);newGame(seed,mode);g.tl=[];$('start').style.display='none';$('over').style.display='none';}
 function rank(s){return s>=2550?curTitle().master:s>=1800?tx('rank_2'):s>=900?tx('rank_3'):tx('rank_4');}
 // 共有文：絵文字の結果行（🌟🟩🟨🟥）はことばに関係なく共通
-function shareText(){return curTitle().share+' '+(g.mode==='daily'?tx('share_daily',{d:dateLabel(g.seed)}):tx('share_prac'))+'\n'+tx('share_line',{emoji:g.res.map(r=>r.tier.em).join(''),score:g.score,rank:rank(g.score)});}
+function shareText(){return '💥'+(g.mode==='daily'?tx('share_daily',{d:dateLabel(g.seed)}):tx('share_prac'))+'\n'+tx('share_line',{emoji:g.res.map(r=>r.tier.em).join(''),score:g.score,rank:rank(g.score)});}
 function showResult(){$('over').style.display='flex';const c=$('over').querySelector('.card');c.classList.remove('pop');void c.offsetWidth;c.classList.add('pop');
   $('rRank').textContent=rank(g.score);$('rScore').innerHTML=tx('r_score');
   $('emoji').innerHTML=g.res.map((r,i)=>`<span style="animation-delay:${.35+i*.28}s">${r.tier.em}</span>`).join('');
