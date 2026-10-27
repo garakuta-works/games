@@ -54,8 +54,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:#3f7d38;overscroll-beh
 <div class="tb" id="tbR"><button id="bLang">EN</button><button id="bMute">音 ON</button></div>
 
 <div class="ov on" id="start"><div class="card">
-  <div class="sub" id="sProto">試作9(仮題)</div>
-  <div id="logo"></div>
+  <div class="sub" id="sProto">試作9</div>
   <div id="howLine">じゃらしで猫をさそって、水しぶきの庭をかけぬけよう</div>
   <canvas id="demo" width="640" height="300"></canvas>
   <ul class="rules">
@@ -84,8 +83,6 @@ html,body{margin:0;height:100%;overflow:hidden;background:#3f7d38;overscroll-beh
 <script>
 'use strict';
 // ===== 設定 =====
-// 題名(仮題)はここ1か所だけ
-const GAME_TITLE={ja:'ぽしゅけ',en:'Poshuke'};
 const BEST_KEY='proto9_best_v1';
 const $=id=>document.getElementById(id);
 const Q=new URLSearchParams(location.search);
@@ -145,7 +142,7 @@ function wetAt(g,x,yW,t){const save={x:g.x,d:g.d};g.x=x;g.d=yW;let hit=false;for
 return{W,H,P,rng,gen,create,clone,step,update,setToy,begin,mult,jetAng,speed,test,wetAt};})();
 /*CORE-END*/
 const TXT={
- ja:{proto:'試作9(仮題)',how:'じゃらしで猫をさそって、水しぶきの庭をかけぬけよう',
+ ja:{proto:'試作9',how:'じゃらしで猫をさそって、水しぶきの庭をかけぬけよう',
   r1:'画面を左右になぞると <b>じゃらし</b>が動き、猫が<b>少しおくれて</b>追いかける',
   r2:'<b>水に当たる</b>と ぶるぶる止まり、点が減って れんぞくが0に',
   r3:'水のそばの<b>おやつ</b>と、水すれすれの<b>ひやっ</b>で れんぞく倍率アップ',
@@ -156,7 +153,7 @@ const TXT={
    wet:'猫は じゃらしに少しおくれて付いてきて、行き過ぎる。動かすのを早めに、小さめにしてみよう。',
    fish:'安全な所だけだと点が伸びにくい。水が通りすぎた直後に、そのあとを追って おやつを取ろう。',
    graze:'水のすぐ横を ぬれずにぬけると「ひやっ」で点と倍率が上がる。'}},
- en:{proto:'Prototype 9 (working title)',how:'Lure the cat with a feather toy and dash through the sprinkler garden',
+ en:{proto:'Prototype 9',how:'Lure the cat with a feather toy and dash through the sprinkler garden',
   r1:'Swipe left/right to move the <b>toy</b>. The cat follows it <b>with a little lag</b>',
   r2:'<b>Get sprayed</b> and the cat stops to shake: you lose points and your combo',
   r3:'Grab <b>treats</b> near the water and slip past spray for a <b>close call</b> to raise your combo',
@@ -168,8 +165,8 @@ const TXT={
    fish:'Playing only safe spots scores little. Follow right behind the spray to grab treats.',
    graze:'Slip past the spray without getting wet for a close call: points and combo.'}}};
 let LANG=Q.get('lang')==='en'?'en':(Q.get('lang')==='ja'?'ja':((navigator.language||'ja').startsWith('ja')?'ja':'en'));
-function applyLang(){const T=TXT[LANG];document.documentElement.lang=LANG;document.title=GAME_TITLE[LANG]+' — '+T.proto;
-  $('logo').textContent=GAME_TITLE[LANG];$('sProto').textContent=T.proto;$('howLine').textContent=T.how;
+function applyLang(){const T=TXT[LANG];document.documentElement.lang=LANG;document.title='試作9';
+  $('sProto').textContent=T.proto;$('howLine').textContent=T.how;
   $('r1').innerHTML=T.r1;$('r2').innerHTML=T.r2;$('r3').innerHTML=T.r3;$('bStart').textContent=T.start;$('bRetry').textContent=T.retry;$('bTitle').textContent=T.title;
   $('rTitle').textContent=T.result;$('rNew').textContent=T.newBest;$('lFish').textContent=T.fish;$('lGraze').textContent=T.graze;$('lWet').textContent=T.wet;
   $('bLang').textContent=T.lang;$('bMute').textContent=SND.muted?T.mOff:T.mOn;if(lastResult)showResult(lastResult,true);}
