@@ -56,8 +56,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:#2b2440;overscroll-beh
 <div class="tb" id="tbR"><button id="bLang">EN</button><button id="bMute">音 ON</button></div>
 
 <div class="ov on" id="start"><div class="card">
-  <div class="sub" id="sProto">試作10(仮題)</div>
-  <div id="logo"></div>
+  <div class="sub" id="sProto">試作10</div>
   <div id="howLine">糸巻きを回して、凧でひかりの玉をつなごう</div>
   <canvas id="demo" width="640" height="300"></canvas>
   <ul class="rules">
@@ -86,8 +85,6 @@ html,body{margin:0;height:100%;overflow:hidden;background:#2b2440;overscroll-beh
 <script>
 'use strict';
 // ===== 設定 =====
-// 題名(仮題)はここ1か所だけ
-const GAME_TITLE={ja:'ひゅるまき',en:'Hyurumaki'};
 const BEST_KEY='proto10_best_v1';
 const $=id=>document.getElementById(id);
 const Q=new URLSearchParams(location.search);
@@ -136,7 +133,7 @@ function update(g,dt){const n=Math.max(1,Math.round(dt/P.DT));const h=dt/n;for(l
 return{W,H,P,rng,gen,create,clone,step,update,setCrank,begin,mult,windAt,speed,ox};})();
 /*CORE-END*/
 const TXT={
- ja:{proto:'試作10(仮題)',how:'糸巻きを回して、凧でひかりの玉をつなごう',
+ ja:{proto:'試作10',how:'糸巻きを回して、凧でひかりの玉をつなごう',
   r1:'下の<b>糸巻き</b>のまわりを ぐるぐるなぞる。<b>速く回すほど凧が下がる</b>',
   r2:'取った玉は糸に通って<b>重くなる</b>。重いほど凧が下がるので 回すのをゆるめる',
   r3:'1列ぜんぶ通すと<b>ちょうちん</b>になって飛んでいく(ボーナス)。取り逃すと玉がこぼれる',
@@ -147,7 +144,7 @@ const TXT={
    rate:'回す速さ=凧の高さ。凧が玉より上なら速く、下ならゆっくり回そう。',
    chain:'列の形(波・坂・段)を見て、1つ先の玉に合わせると ちょうちんにしやすい。',
    gust:'玉を通すほど凧は下がる。列の後半は 回す速さを少しゆるめよう。'}},
- en:{proto:'Prototype 10 (working title)',how:'Spin the reel and fly your kite through strings of light',
+ en:{proto:'Prototype 10',how:'Spin the reel and fly your kite through strings of light',
   r1:'Circle your finger around the <b>reel</b>. <b>Spin faster to pull the kite down</b>',
   r2:'Caught orbs thread onto the line and make it <b>heavier</b>. Heavier pulls the kite down, so ease off',
   r3:'Thread a whole string and it floats away as a <b>lantern</b> (bonus). Miss one and the orbs spill',
@@ -159,8 +156,8 @@ const TXT={
    chain:'Read the shape of each string (wave, slope, step) and aim for the next orb.',
    gust:'Each threaded orb pulls the kite lower. Spin a little slower near the end of a string.'}}};
 let LANG=Q.get('lang')==='en'?'en':(Q.get('lang')==='ja'?'ja':((navigator.language||'ja').startsWith('ja')?'ja':'en'));
-function applyLang(){const T=TXT[LANG];document.documentElement.lang=LANG;document.title=GAME_TITLE[LANG]+' — '+T.proto;
-  $('logo').textContent=GAME_TITLE[LANG];$('sProto').textContent=T.proto;$('howLine').textContent=T.how;
+function applyLang(){const T=TXT[LANG];document.documentElement.lang=LANG;document.title='試作10';
+  $('sProto').textContent=T.proto;$('howLine').textContent=T.how;
   $('r1').innerHTML=T.r1;$('r2').innerHTML=T.r2;$('r3').innerHTML=T.r3;$('bStart').textContent=T.start;$('bRetry').textContent=T.retry;$('bTitle').textContent=T.title;
   $('rTitle').textContent=T.result;$('rNew').textContent=T.newBest;$('lGot').textContent=T.got;$('lChain').textContent=T.chain;$('lCombo').textContent=T.combo2;
   $('bLang').textContent=T.lang;$('bMute').textContent=SND.muted?T.mOff:T.mOn;if(lastResult)showResult(lastResult,true);}
