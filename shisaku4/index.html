@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>試作</title><!-- 題名は下の GAME_TITLE から applyTitle() が入れる -->
+<title>試作4</title>
 <style>
 :root{--bg:#070b1c;--ink:#1d2340;--card:#f4f1ea;--rim:#c9b98a;--accent:#e88a2a;--accentDark:#9a4e10;--sub:#5a6080;--subbtn:#4a5a8a;--subbtnDark:#2a345a;--howbg:#e6e3ee;--logo1:#ffe6a0;--logo2:#ff9a3a;--logoShadow:#3a1a08}
 html,body{margin:0;height:100%;background:var(--bg);font-family:"Hiragino Maru Gothic ProN","Rounded Mplus 1c","M PLUS Rounded 1c","Noto Sans CJK JP",system-ui,sans-serif;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;color:var(--ink)}
@@ -62,7 +62,6 @@ html,body{background:linear-gradient(180deg,#0b0f22 0%,#0b0f22 18%,#1c1622 62%,#
 
 <div id="start" class="ov"><div class="card pop">
   <button id="bGear" class="gear" aria-label="設定" data-i18n-aria="settings">⚙</button>
-  <div class="logo" id="logo"></div>
   <div class="tag" data-i18n="tag"></div>
   <ul class="how">
     <li data-i="1" data-i18n="how1"></li>
@@ -220,9 +219,6 @@ const tx=(k,v)=>I18NKIT.t(k,v);
 // kit.js の copyText と同じ動き。メッセージだけ今のことばで出す
 function copyTextI18n(t,msgEl){(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>msgEl.textContent=tx('copied')).catch(()=>msgEl.textContent=t);}
 
-// ================= 題名の設定（仮題。差し替えはこの2行だけ。画面・タブ名・結果コピー・共有文はここから参照）=================
-const GAME_TITLE='そわそわ夜行';            // 日本語の題名（仮題）
-const GAME_TITLE_EN='Sowasowa Night Train'; // 英語の題名（仮訳・未確定）
 // ================= ことば（日本語が既定。ja は元の文言そのまま／en は仮訳。駅名はローマ字） =================
 const I18N={ja:{rotate_msg:"スマホを縦にして遊んでね",rotate_sub:"このゲームは縦長の画面用です",settings:"設定",settings_title:"設定",lang_label:"ことば / Language",close:"とじる",copied:"コピーしました（どこにも投稿していません）",tag:"雪の町をぬける、灯りの夜汽車",how1:"座席を<b>タップ</b>すると、その前へ歩いていく",how2:"旅人の<b>ランタンの色と記号</b>は、降りる駅のしるし",how3:"行先板の<b>「つぎ」と同じしるし</b>が灯る人の前で待とう",b_daily:"今夜の便にのる",b_prac:"れんしゅう",b_how:"灯りの見かた",b_howback:"わかった",b_retry:"もう一回（れんしゅう）",b_copy:"結果をコピー",b_menu:"タイトルへ",how_head:"降りる旅人は、灯りで支度する",tell1:"その次で降りる<br>色がちらちら",tell2:"つぎで降りる<br>色が灯り、フード",tell3:"もうすぐ<br>灯りを高くかかげる",how_note:"・灯りには<b>駅の記号</b>も浮かぶ。色が見分けにくいときは記号で読める。<br>・<b>寒がりさん</b>はいつもフード。<b>灯りずき</b>はずっと何かの色を灯している（フードはなし）。<br>・<b>窓ながめ</b>の旅人は支度がおそい。<br>・ほかの立ち客はフードしか見ていない。",you:"きみ",seated_fx:"すわれた！",taken_fx:"とられた…",board_ok:"すわれた！ {st}で着席",board_end:"終点「{st}」…立ちっぱなし",board_door:"{st}　とうちゃく",chip_next:"つぎ",chip_after:"その次",rank_x:"{st}まで立ち旅",rank_1:"灯り読みの名人",rank_2:"灯りの目利き",rank_4:"ぬくぬく旅人",rank_5:"ねばりの夜行",share_daily:"{d}の夜",share_prac:"れんしゅう",seated_n:"{n}駅目で着席 ",no_seat:"座れず ",daily_done:"今夜の記録 {text}（記録は1日1回目のみ）",daily_none:"今夜の便は、だれが乗っても同じ旅人です",r_ok:"{n}駅目「{st}」で着席",r_end:"終点「{st}」まで座れず",suffix:"（試作）",coach:"「つぎ」と同じしるしが灯った人の前を、タップ",best_seat:"じぶんの最高：{n}駅目で着席",best_none:"じぶんの最高：まだ座れていない",best_new:"★ じぶんの最高を更新！ {n}駅目で着席",tip_end:"コツ：「つぎ」と同じしるしが灯って、フードをかぶった人が、つぎの駅で降りる人。",tip_hood:"コツ：フードだけの人は「寒がりさん」かも。しるしの灯りもいっしょに見よう。",tip_flick:"コツ：しるしがちらちらする人は「その次」で降りる。先に前で待っておくと早く座れる。",tip_mado:"コツ：窓をながめている人は、支度がおそいだけ。最後にしるしを高くかかげる。"},
  en:{rotate_msg:"Please turn your phone upright",rotate_sub:"This game is made for a tall screen",settings:"Settings",settings_title:"Settings",lang_label:"ことば / Language",close:"Close",copied:"Copied (nothing was posted anywhere)",tag:"A night train of lanterns through snowy towns",how1:"<b>Tap</b> a seat to walk over and stand by it",how2:"A traveler's <b>lantern color and symbol</b> show their stop",how3:"Wait by someone whose lantern matches <b>“Next”</b> on the board",b_daily:"Board tonight's train",b_prac:"Practice",b_how:"Reading lanterns",b_howback:"Got it",b_retry:"Again (practice)",b_copy:"Copy result",b_menu:"Title",how_head:"Travelers about to get off get ready with their lanterns",tell1:"Off at the stop after next<br>color flickers",tell2:"Off at the next stop<br>color glows, hood up",tell3:"Very soon<br>lantern held high",how_note:"・Each lantern also shows the <b>station symbol</b>, so you can read it even when colors are hard to tell apart.<br>・<b>Chilly folks</b> always wear a hood. <b>Lantern lovers</b> keep some color lit all the time (no hood).<br>・<b>Window gazers</b> are slow to get ready.<br>・Other standing passengers only watch for hoods.",you:"You",seated_fx:"Seated!",taken_fx:"Taken…",board_ok:"Seated! At {st}",board_end:"Last stop “{st}”… stood all the way",board_door:"Arriving: {st}",chip_next:"Next",chip_after:"After",rank_x:"Standing all the way to {st}",rank_1:"Master Lantern Reader",rank_2:"Sharp Lantern Eye",rank_4:"Cozy Traveler",rank_5:"Patient Night Rider",share_daily:"{d} night",share_prac:"practice",seated_n:"Seated at stop {n} ",no_seat:"No seat ",daily_done:"Tonight's record {text} (first ride of the day only)",daily_none:"Tonight's train has the same travelers for everyone",r_ok:"Seated at stop {n}, “{st}”",r_end:"No seat all the way to the last stop, “{st}”",suffix:" (prototype)",coach:"Tap the seat of someone whose lantern shows the “Next” symbol",best_seat:"Your best: seated at stop {n}",best_none:"Your best: no seat yet",best_new:"★ New personal best! Seated at stop {n}",tip_end:"Tip: someone with a hood up and a lantern showing the “Next” symbol gets off at the next stop.",tip_hood:"Tip: a hood alone may just mean a chilly traveler. Check the lantern symbol too.",tip_flick:"Tip: a flickering symbol means “the stop after next.” Wait there early to sit sooner.",tip_mado:"Tip: window gazers are just slow to get ready. They raise their lantern at the very end."}};
@@ -669,9 +665,8 @@ function stars(r){return !r.ok?'☆☆☆':r.stop<=2?'★★★':r.stop<=4?'★�
 function rank(r){return !r.ok?tx('rank_x',{st:stopName(STOPS.length-1)}):tx(r.stop<=1?'rank_1':r.stop<=2?'rank_2':r.stop<=4?'rank_4':'rank_5');}
 const seatText=r=>(r.ok?tx('seated_n',{n:r.stop}):tx('no_seat'))+stars(r);
 // 共有文：★と絵文字の旅の記録（❄️🪑…）はことばに関係なく共通
-function shareText(){const r=g.result;return '🏮'+curTitle()+' '+(g.mode==='daily'?tx('share_daily',{d:dateLabel(g.seed)}):tx('share_prac'))+'\n'+seatText(r)+'\n'+g.history.join('');}
-const curTitle=()=>EN()?GAME_TITLE_EN:GAME_TITLE;
-function applyTitle(){document.title=curTitle()+tx('suffix');$('logo').textContent=curTitle();}
+function shareText(){const r=g.result;return '🏮'+(g.mode==='daily'?tx('share_daily',{d:dateLabel(g.seed)}):tx('share_prac'))+'\n'+seatText(r)+'\n'+g.history.join('');}
+function applyTitle(){document.title='試作4';}
 function showStart(){$('start').style.display='flex';$('over').style.display='none';$('howto').style.display='none';
   const d=localStorage.getItem('lantern_daily_'+todaySeed());
   const dd=d&&JSON.parse(d);const dtext=dd&&(EN()?seatText({ok:dd.stop>0,stop:dd.stop}):dd.text);   // 保存済みの記録文は日本語なので英語では作り直す
