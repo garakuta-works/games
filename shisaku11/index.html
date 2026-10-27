@@ -58,8 +58,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:#3a2a22;overscroll-beh
 <div class="tb" id="tbR"><button id="bLang">EN</button><button id="bMute">音 ON</button></div>
 
 <div class="ov on" id="start"><div class="card">
-  <div class="sub" id="sProto">試作11(仮題)</div>
-  <div id="logo"></div>
+  <div class="sub" id="sProto">試作11</div>
   <div id="howLine">本をドミノみたいに倒して、ぱたぱたつなげよう</div>
   <canvas id="demo" width="640" height="300"></canvas>
   <ul class="rules">
@@ -88,8 +87,6 @@ html,body{margin:0;height:100%;overflow:hidden;background:#3a2a22;overscroll-beh
 <script>
 'use strict';
 // ===== 設定 =====
-// 題名(仮題)はここ1か所だけ
-const GAME_TITLE={ja:'ぱたしょ',en:'Patasho'};
 const BEST_KEY='proto11_best_v1';
 const $=id=>document.getElementById(id);
 const Q=new URLSearchParams(location.search);
@@ -136,7 +133,7 @@ function ahead(g){let n=0;for(let i=g.books.length-1;i>=0&&g.books[i].st===0;i--
 return{W,H,P,rng,create,clone,step,update,begin,place,canPlace,mult,nextH,last,ahead};})();
 /*CORE-END*/
 const TXT={
- ja:{proto:'試作11(仮題)',how:'本をドミノみたいに倒して、ぱたぱたつなげよう',
+ ja:{proto:'試作11',how:'本をドミノみたいに倒して、ぱたぱたつなげよう',
   r1:'画面を<b>タップ</b>すると、その横の位置に<b>次の本</b>が立つ。倒れていく列の<b>先へ先へ</b>置こう',
   r2:'<b>前の本の高さ</b>より遠いと届かず、列がとぎれる。<b>ぎりぎりまで離すほど高得点</b>',
   r3:'続けて倒すと倍率アップ。置くのがおそいと<b>列に追いつかれる</b>',
@@ -148,7 +145,7 @@ const TXT={
    far:'もっと離して大丈夫。前の本の高さ近くまで離すと1冊の点が大きく上がる。',
    gap:'届く距離は前の本の高さまで。背の低い本のあとは近めに置こう。',
    slow:'先に2〜3冊置いておくと 追いつかれにくい。'}},
- en:{proto:'Prototype 11 (working title)',how:'Topple books like dominoes and keep the chain going',
+ en:{proto:'Prototype 11',how:'Topple books like dominoes and keep the chain going',
   r1:'<b>Tap</b> to stand the <b>next book</b> at that spot. Keep placing ahead of the falling line',
   r2:'Farther than the <b>previous book is tall</b> and it won\'t reach. <b>The closer to the limit, the more points</b>',
   r3:'Keep the chain going to raise your combo. Too slow and the <b>line catches up</b>',
@@ -161,8 +158,8 @@ const TXT={
    gap:'A book reaches only as far as it is tall. Place closer after short books.',
    slow:'Stay 2 or 3 books ahead so the line doesn\'t catch up.'}}};
 let LANG=Q.get('lang')==='en'?'en':(Q.get('lang')==='ja'?'ja':((navigator.language||'ja').startsWith('ja')?'ja':'en'));
-function applyLang(){const T=TXT[LANG];document.documentElement.lang=LANG;document.title=GAME_TITLE[LANG]+' — '+T.proto;
-  $('logo').textContent=GAME_TITLE[LANG];$('sProto').textContent=T.proto;$('howLine').textContent=T.how;
+function applyLang(){const T=TXT[LANG];document.documentElement.lang=LANG;document.title='試作11';
+  $('sProto').textContent=T.proto;$('howLine').textContent=T.how;
   $('r1').innerHTML=T.r1;$('r2').innerHTML=T.r2;$('r3').innerHTML=T.r3;$('bStart').textContent=T.start;$('bRetry').textContent=T.retry;$('bTitle').textContent=T.title;
   $('rTitle').textContent=T.result;$('rNew').textContent=T.newBest;$('lLinks').textContent=T.links;$('lGap').textContent=T.gap;$('lCombo').textContent=T.combo2;
   $('bLang').textContent=T.lang;$('bMute').textContent=SND.muted?T.mOff:T.mOn;if(lastResult)showResult(lastResult,true);}
