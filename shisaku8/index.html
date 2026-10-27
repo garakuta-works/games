@@ -51,8 +51,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:#6b4a2e;overscroll-beh
 <div class="tb" id="tbR"><button id="bLang">EN</button><button id="bMute">音 ON</button></div>
 
 <div class="ov on" id="start"><div class="card">
-  <div class="sub" id="sProto">試作8(仮題)</div>
-  <div id="logo">ちょろり</div>
+  <div class="sub" id="sProto">試作8</div>
   <div id="howLine">指をはなさず、1→2→3… と毛糸をかけよう</div>
   <canvas id="demo" width="640" height="300"></canvas>
   <ul class="rules">
@@ -81,7 +80,6 @@ html,body{margin:0;height:100%;overflow:hidden;background:#6b4a2e;overscroll-beh
 <script>
 'use strict';
 // ===== 設定 =====
-const GAME_TITLE={ja:'ちょろり',en:'Chorori'}; // 仮題。題名は保留(ここ1か所で変更)
 const BEST_KEY='proto8_best_v1';              // localStorage のキー(ベストスコアの数値だけ保存)
 
 /*CORE-START*/
@@ -201,11 +199,11 @@ const CORE=(()=>{
 
 // ===== 文言 =====
 const TXT={
- ja:{proto:'試作8(仮題)',how:'指をはなさず、1→2→3… と毛糸をかけよう',r1:'光るピンに指をおいて、<b>つぎの番号</b>へなぞる',r2:'<b>自分の糸を横切る</b>・<b>ちがう番号にふれる</b>と からまる',r3:'指をはなさず続けるほど 1本の点が大きい',
+ ja:{proto:'試作8',how:'指をはなさず、1→2→3… と毛糸をかけよう',r1:'光るピンに指をおいて、<b>つぎの番号</b>へなぞる',r2:'<b>自分の糸を横切る</b>・<b>ちがう番号にふれる</b>と からまる',r3:'指をはなさず続けるほど 1本の点が大きい',
    start:'はじめる',retry:'もう1回',title:'タイトルへ',res:'けっか',best:'ベスト',newBest:'ベスト更新！',reach:'とどいた番号',chain:'最長つなぎ',tangle:'からまった',mOn:'音 ON',mOff:'音 OFF',lang:'EN',
    ready:'光るピン 1 に指をおいて',ready2:'2 へなぞってスタート',next:'つぎ',tangled:'からまった！',crossW:'糸を横切った',pinW:'ちがう番号',lift:'はなした → つなぎ 0',chainL:'つなぎ',time:'のこり',
    tips:{cross:'コツ:糸の「外側」を回ると からまりにくい。',pin:'コツ:ほかの番号を よけて、すき間を通ろう。',lift:'コツ:指をはなさずに続けると、1本の点が 10→20→30…と増える。',fast:'コツ:今の番号をつなぐ前に、つぎの番号を目で探しておこう。',great:'すごい！ 次は ベスト更新を ねらおう。'}},
- en:{proto:'Prototype 8 (working title)',how:'Keep your finger down and string the yarn 1→2→3…',r1:'Put a finger on the glowing pin and trace to the <b>next number</b>',r2:'<b>Crossing your own yarn</b> or <b>touching a wrong number</b> tangles it',r3:'The longer you keep going, the more each pin scores',
+ en:{proto:'Prototype 8',how:'Keep your finger down and string the yarn 1→2→3…',r1:'Put a finger on the glowing pin and trace to the <b>next number</b>',r2:'<b>Crossing your own yarn</b> or <b>touching a wrong number</b> tangles it',r3:'The longer you keep going, the more each pin scores',
    start:'Start',retry:'Play again',title:'Title',res:'Result',best:'Best',newBest:'New best!',reach:'Reached',chain:'Longest chain',tangle:'Tangles',mOn:'Sound ON',mOff:'Sound OFF',lang:'JA',
    ready:'Touch the glowing pin 1',ready2:'and trace to 2 to start',next:'next',tangled:'Tangled!',crossW:'crossed the yarn',pinW:'wrong number',lift:'Lifted → chain 0',chainL:'chain',time:'time',
    tips:{cross:'Tip: go around the outside of your yarn to avoid tangles.',pin:'Tip: weave through the gaps between other numbers.',lift:'Tip: keep your finger down — each pin scores 10→20→30…',fast:'Tip: spot the next number before you reach the current one.',great:'Amazing! Now go for a new best.'}}
@@ -213,8 +211,8 @@ const TXT={
 const Q=new URLSearchParams(location.search);
 let LANG=Q.get('lang')==='en'?'en':(Q.get('lang')==='ja'?'ja':((navigator.language||'ja').startsWith('ja')?'ja':'en'));
 const $=id=>document.getElementById(id);
-function applyLang(){const T=TXT[LANG];document.documentElement.lang=LANG;document.title=GAME_TITLE[LANG]+' — '+T.proto;
-  $('logo').textContent=GAME_TITLE[LANG];$('sProto').textContent=T.proto;$('howLine').textContent=T.how;$('r1').innerHTML=T.r1;$('r2').innerHTML=T.r2;$('r3').innerHTML=T.r3;
+function applyLang(){const T=TXT[LANG];document.documentElement.lang=LANG;document.title='試作8';
+  $('sProto').textContent=T.proto;$('howLine').textContent=T.how;$('r1').innerHTML=T.r1;$('r2').innerHTML=T.r2;$('r3').innerHTML=T.r3;
   $('bStart').textContent=T.start;$('bRetry').textContent=T.retry;$('bTitle').textContent=T.title;$('rTitle').textContent=T.res;$('rNew').textContent=T.newBest;
   $('lReach').textContent=T.reach;$('lChain').textContent=T.chain;$('lTangle').textContent=T.tangle;$('bLang').textContent=T.lang;$('bMute').textContent=SND.muted?T.mOff:T.mOn;
   if(lastResult)showResult(lastResult,true);}
