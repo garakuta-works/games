@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>むずっ</title>
+<title>試作7</title>
 <style>
 /* 外部フォント・外部画像は使わない。端末の標準フォントのみ */
 html,body{margin:0;height:100%;overflow:hidden;background:#efe6d4;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
@@ -72,13 +72,14 @@ button{border-radius:20px 24px 18px 26px/24px 18px 26px 20px}
 .bar .tr{background:repeating-linear-gradient(90deg,#efe5d2 0 6px,#e8dcc4 6px 7px)}
 .bar .fl{background:linear-gradient(90deg,#9fcbe0,#7fb3a0)}.bar .fl.h{background:linear-gradient(90deg,#d6b6dc,#b7a0d2)}
 #tip{border-color:#b8d3de}
+/* 題名を外したので、上の角の飾り(しずく・花)と説明文が重ならないよう少し下げる */
+#start .card{padding-top:40px}
 </style>
 </head>
 <body>
 <canvas id="c"></canvas>
 <div id="top"><button id="bLang" type="button">EN</button><button id="bMute" type="button">音 ON</button></div>
 <div class="ov on" id="start"><div class="card">
- <h1 id="logo">むずっ</h1>
  <p class="line" id="howLine"></p>
  <p class="sub" id="howSub"></p>
  <ol class="steps" id="steps"></ol>
@@ -100,8 +101,7 @@ button{border-radius:20px 24px 18px 26px/24px 18px 26px 20px}
 </div></div>
 <script>
 'use strict';
-/* ===== 設定（ここだけ変えれば題名が変わる） ===== */
-const GAME_TITLE={ja:'むずっ',en:'Muzutt'}; // 仮題。題名は保留
+/* ===== 設定 ===== */
 const BEST_KEY='proto7_best_v1';            // localStorage のキー（ベストスコアだけ保存）
 
 /*CORE-START*/
@@ -347,7 +347,7 @@ $('bStart').onclick=startRun;$('bRetry').onclick=startRun;
 $('bTitle').onclick=()=>{sUI();G=null;$('over').classList.remove('on');$('start').classList.add('on');};
 $('bMute').onclick=()=>{SND.init();SND.setMute(!SND.muted);applyLang();};
 $('bLang').onclick=()=>{LANG=LANG==='ja'?'en':'ja';applyLang();};
-function applyLang(){const L=T();document.documentElement.lang=LANG;document.title=GAME_TITLE[LANG];$('logo').textContent=GAME_TITLE[LANG];$('howLine').textContent=L.line;$('howSub').textContent=L.sub;$('howSub').style.display=L.sub?'':'none';
+function applyLang(){const L=T();document.documentElement.lang=LANG;document.title='試作7';$('howLine').textContent=L.line;$('howSub').textContent=L.sub;$('howSub').style.display=L.sub?'':'none';
   $('bStart').textContent=L.start;$('keys').textContent=L.keys;$('bMute').textContent=L.mute[SND.muted?1:0];$('bMute').setAttribute('aria-pressed',SND.muted?'true':'false');$('bLang').textContent=L.lang;
   $('rLabel').textContent=L.rLabel;$('bRetry').textContent=L.retry;$('bTitle').textContent=L.title;$('steps').innerHTML=L.steps.map((x,i)=>`<li><span class="n">${i+1}</span><span>${x}</span></li>`).join('');$('note').textContent=noteOn?L.interrupted:'';fillResult();
   }
