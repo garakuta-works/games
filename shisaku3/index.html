@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>ゆらゆら ゆりかご合体（プロトタイプ）</title>
+<title>試作3</title>
 <style>
   html,body{margin:0;height:100%;background:#fff5e8;font-family:"Hiragino Maru Gothic ProN","Rounded Mplus 1c",system-ui,sans-serif;overflow:hidden;touch-action:none;user-select:none}
   #wrap{display:flex;flex-direction:column;align-items:center;height:100%}
@@ -131,7 +131,7 @@ function gameOver(){ if(over)return; over=true;
   if(score>best){best=score;localStorage.setItem('yurikago_best',best);document.getElementById('best').textContent=best;}
   document.getElementById('result').innerHTML='スコア <b>'+score+'</b><br>いちばん育ったのは<br><b style="font-size:18px">'+STAGES[maxStage].n+'</b>';
   document.getElementById('over').style.display='flex'; beep(200,0.4,'sawtooth',0.06);
-  document.title='GAMEOVER score='+score+' max='+maxStage;
+  if(params.get('autotest'))document.title='GAMEOVER score='+score+' max='+maxStage;
 }
 
 // ===== 描画 =====
@@ -184,7 +184,7 @@ cv.addEventListener('pointerup',e=>{aimX=toLocal(e);drop();});
 window.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')aimX-=20;if(e.key==='ArrowRight')aimX+=20;if(e.key===' ')drop();});
 document.getElementById('retry').onclick=reset;
 document.getElementById('copy').onclick=()=>{
-  const txt='【ゆらゆら ゆりかご合体】スコア'+score+'／「'+STAGES[maxStage].n+'」まで育てた！';
+  const txt='スコア'+score+'／「'+STAGES[maxStage].n+'」まで育てた！';
   (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>document.getElementById('copied').textContent='コピーしました（投稿はしません）')
   .catch(()=>{document.getElementById('copied').textContent=txt;});
 };
