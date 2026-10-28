@@ -1,0 +1,2154 @@
+{
+ "note": "ゲーム用の創作です。実際の医療判断には使わないでください。正解=その疾患・症状に効能が確認できる代表的な薬(一般名)。誤答=治療分野タグが重ならない別分野の薬。各正解は KEGG MEDICUS 掲載の医療用医薬品添付文書の「効能または効果」欄に病名キーワードがあることを機械照合し、KEGG DRUG の効能分類も併記した。「第一選択」かどうかは診療ガイドラインまでは照合していない(代表的な適応薬という扱い)。誤答は全組み合わせをルール検査し、正解になりうる・紛らわしすぎる・禁忌説明が要るものを差し替えた(distractor_audit.md)。",
+ "retrieved": "2026-10-27",
+ "drugs": {
+  "amlodipine": {
+   "name": "アムロジピン",
+   "kegg": "D00615",
+   "tags": [
+    "cv",
+    "bp"
+   ],
+   "url": "https://www.kegg.jp/entry/D00615"
+  },
+  "atorvastatin": {
+   "name": "アトルバスタチン",
+   "kegg": "D02258",
+   "tags": [
+    "cv",
+    "lipid"
+   ],
+   "url": "https://www.kegg.jp/entry/D02258"
+  },
+  "warfarin": {
+   "name": "ワルファリン",
+   "kegg": "D01280",
+   "tags": [
+    "cv",
+    "blood"
+   ],
+   "url": "https://www.kegg.jp/entry/D01280"
+  },
+  "nitroglycerin": {
+   "name": "ニトログリセリン",
+   "kegg": "D00515",
+   "tags": [
+    "cv",
+    "bp"
+   ],
+   "url": "https://www.kegg.jp/entry/D00515"
+  },
+  "furosemide": {
+   "name": "フロセミド",
+   "kegg": "D00331",
+   "tags": [
+    "cv",
+    "bp",
+    "renal"
+   ],
+   "url": "https://www.kegg.jp/entry/D00331"
+  },
+  "metformin": {
+   "name": "メトホルミン",
+   "kegg": "D00944",
+   "tags": [
+    "endo",
+    "dm"
+   ],
+   "url": "https://www.kegg.jp/entry/D00944"
+  },
+  "glucagon": {
+   "name": "グルカゴン",
+   "kegg": "D00116",
+   "tags": [
+    "endo",
+    "dm"
+   ],
+   "url": "https://www.kegg.jp/entry/D00116"
+  },
+  "levothyroxine": {
+   "name": "レボチロキシン",
+   "kegg": "D01010",
+   "tags": [
+    "endo",
+    "thyroid"
+   ],
+   "url": "https://www.kegg.jp/entry/D01010"
+  },
+  "thiamazole": {
+   "name": "チアマゾール",
+   "kegg": "D00401",
+   "tags": [
+    "endo",
+    "thyroid"
+   ],
+   "url": "https://www.kegg.jp/entry/D00401"
+  },
+  "allopurinol": {
+   "name": "アロプリノール",
+   "kegg": "D00224",
+   "tags": [
+    "gout"
+   ],
+   "url": "https://www.kegg.jp/entry/D00224"
+  },
+  "colchicine": {
+   "name": "コルヒチン",
+   "kegg": "D00570",
+   "tags": [
+    "gout",
+    "immune"
+   ],
+   "url": "https://www.kegg.jp/entry/D00570"
+  },
+  "alendronate": {
+   "name": "アレンドロン酸",
+   "kegg": "D00939",
+   "tags": [
+    "bone"
+   ],
+   "url": "https://www.kegg.jp/entry/D00939"
+  },
+  "methotrexate": {
+   "name": "メトトレキサート",
+   "kegg": "D00142",
+   "tags": [
+    "immune",
+    "bone",
+    "onc",
+    "derm"
+   ],
+   "url": "https://www.kegg.jp/entry/D00142"
+  },
+  "tacrolimus": {
+   "name": "タクロリムス(軟膏)",
+   "kegg": "D00107",
+   "tags": [
+    "immune",
+    "derm"
+   ],
+   "url": "https://www.kegg.jp/entry/D00107"
+  },
+  "lansoprazole": {
+   "name": "ランソプラゾール",
+   "kegg": "D00355",
+   "tags": [
+    "gi"
+   ],
+   "url": "https://www.kegg.jp/entry/D00355"
+  },
+  "famotidine": {
+   "name": "ファモチジン",
+   "kegg": "D00318",
+   "tags": [
+    "gi"
+   ],
+   "url": "https://www.kegg.jp/entry/D00318"
+  },
+  "magnesiumoxide": {
+   "name": "酸化マグネシウム",
+   "kegg": "D01167",
+   "tags": [
+    "gi"
+   ],
+   "url": "https://www.kegg.jp/entry/D01167"
+  },
+  "loperamide": {
+   "name": "ロペラミド",
+   "kegg": "D00729",
+   "tags": [
+    "gi"
+   ],
+   "url": "https://www.kegg.jp/entry/D00729"
+  },
+  "metoclopramide": {
+   "name": "メトクロプラミド",
+   "kegg": "D00726",
+   "tags": [
+    "gi",
+    "emesis"
+   ],
+   "url": "https://www.kegg.jp/entry/D00726"
+  },
+  "dimenhydrinate": {
+   "name": "ジメンヒドリナート",
+   "kegg": "D00520",
+   "tags": [
+    "emesis",
+    "allergy",
+    "gi"
+   ],
+   "url": "https://www.kegg.jp/entry/D00520"
+  },
+  "valaciclovir": {
+   "name": "バラシクロビル",
+   "kegg": "D00398",
+   "tags": [
+    "inf",
+    "pain",
+    "derm"
+   ],
+   "url": "https://www.kegg.jp/entry/D00398"
+  },
+  "oseltamivir": {
+   "name": "オセルタミビル",
+   "kegg": "D00900",
+   "tags": [
+    "inf",
+    "fever",
+    "resp"
+   ],
+   "url": "https://www.kegg.jp/entry/D00900"
+  },
+  "levofloxacin": {
+   "name": "レボフロキサシン",
+   "kegg": "D00588",
+   "tags": [
+    "inf",
+    "uro"
+   ],
+   "url": "https://www.kegg.jp/entry/D00588"
+  },
+  "isoniazid": {
+   "name": "イソニアジド",
+   "kegg": "D00346",
+   "tags": [
+    "inf",
+    "resp"
+   ],
+   "url": "https://www.kegg.jp/entry/D00346"
+  },
+  "terbinafine": {
+   "name": "テルビナフィン",
+   "kegg": "D02219",
+   "tags": [
+    "inf",
+    "derm"
+   ],
+   "url": "https://www.kegg.jp/entry/D02219"
+  },
+  "entecavir": {
+   "name": "エンテカビル",
+   "kegg": "D04008",
+   "tags": [
+    "inf",
+    "liver"
+   ],
+   "url": "https://www.kegg.jp/entry/D04008"
+  },
+  "salbutamol": {
+   "name": "サルブタモール(吸入)",
+   "kegg": "D00683",
+   "tags": [
+    "resp",
+    "allergy"
+   ],
+   "url": "https://www.kegg.jp/entry/D00683"
+  },
+  "tiotropium": {
+   "name": "チオトロピウム(吸入)",
+   "kegg": "D01929",
+   "tags": [
+    "resp"
+   ],
+   "url": "https://www.kegg.jp/entry/D01929"
+  },
+  "dextromethorphan": {
+   "name": "デキストロメトルファン",
+   "kegg": "D00848",
+   "tags": [
+    "resp"
+   ],
+   "url": "https://www.kegg.jp/entry/D00848"
+  },
+  "epinephrine": {
+   "name": "アドレナリン(自己注射)",
+   "kegg": "D00095",
+   "tags": [
+    "resp",
+    "allergy",
+    "cv"
+   ],
+   "url": "https://www.kegg.jp/entry/D00095"
+  },
+  "fexofenadine": {
+   "name": "フェキソフェナジン",
+   "kegg": "D00671",
+   "tags": [
+    "allergy",
+    "resp",
+    "derm"
+   ],
+   "url": "https://www.kegg.jp/entry/D00671"
+  },
+  "olopatadine": {
+   "name": "オロパタジン",
+   "kegg": "D01192",
+   "tags": [
+    "allergy",
+    "derm",
+    "resp"
+   ],
+   "url": "https://www.kegg.jp/entry/D01192"
+  },
+  "adapalene": {
+   "name": "アダパレン(外用)",
+   "kegg": "D01112",
+   "tags": [
+    "derm"
+   ],
+   "url": "https://www.kegg.jp/entry/D01112"
+  },
+  "levodopa": {
+   "name": "レボドパ",
+   "kegg": "D00059",
+   "tags": [
+    "neuro"
+   ],
+   "url": "https://www.kegg.jp/entry/D00059"
+  },
+  "levetiracetam": {
+   "name": "レベチラセタム",
+   "kegg": "D00709",
+   "tags": [
+    "neuro"
+   ],
+   "url": "https://www.kegg.jp/entry/D00709"
+  },
+  "sumatriptan": {
+   "name": "スマトリプタン",
+   "kegg": "D00451",
+   "tags": [
+    "neuro",
+    "pain"
+   ],
+   "url": "https://www.kegg.jp/entry/D00451"
+  },
+  "acetaminophen": {
+   "name": "アセトアミノフェン",
+   "kegg": "D00217",
+   "tags": [
+    "pain",
+    "fever"
+   ],
+   "url": "https://www.kegg.jp/entry/D00217"
+  },
+  "mecobalamin": {
+   "name": "メコバラミン",
+   "kegg": "D03246",
+   "tags": [
+    "neuro",
+    "blood",
+    "pain"
+   ],
+   "url": "https://www.kegg.jp/entry/D03246"
+  },
+  "donepezil": {
+   "name": "ドネペジル",
+   "kegg": "D00670",
+   "tags": [
+    "neuro",
+    "psych"
+   ],
+   "url": "https://www.kegg.jp/entry/D00670"
+  },
+  "sertraline": {
+   "name": "セルトラリン",
+   "kegg": "D00825",
+   "tags": [
+    "psych",
+    "sleep"
+   ],
+   "url": "https://www.kegg.jp/entry/D00825"
+  },
+  "zolpidem": {
+   "name": "ゾルピデム",
+   "kegg": "D00706",
+   "tags": [
+    "psych",
+    "sleep"
+   ],
+   "url": "https://www.kegg.jp/entry/D00706"
+  },
+  "risperidone": {
+   "name": "リスペリドン",
+   "kegg": "D00426",
+   "tags": [
+    "psych"
+   ],
+   "url": "https://www.kegg.jp/entry/D00426"
+  },
+  "lithium": {
+   "name": "炭酸リチウム",
+   "kegg": "D00801",
+   "tags": [
+    "psych"
+   ],
+   "url": "https://www.kegg.jp/entry/D00801"
+  },
+  "atomoxetine": {
+   "name": "アトモキセチン",
+   "kegg": "D02574",
+   "tags": [
+    "psych",
+    "neuro"
+   ],
+   "url": "https://www.kegg.jp/entry/D02574"
+  },
+  "tamsulosin": {
+   "name": "タムスロシン",
+   "kegg": "D01024",
+   "tags": [
+    "uro",
+    "bp"
+   ],
+   "url": "https://www.kegg.jp/entry/D01024"
+  },
+  "mirabegron": {
+   "name": "ミラベグロン",
+   "kegg": "D09535",
+   "tags": [
+    "uro"
+   ],
+   "url": "https://www.kegg.jp/entry/D09535"
+  },
+  "latanoprost": {
+   "name": "ラタノプロスト(点眼)",
+   "kegg": "D00356",
+   "tags": [
+    "eye"
+   ],
+   "url": "https://www.kegg.jp/entry/D00356"
+  },
+  "ferrouscitrate": {
+   "name": "クエン酸第一鉄ナトリウム",
+   "kegg": "D03275",
+   "tags": [
+    "blood"
+   ],
+   "url": "https://www.kegg.jp/entry/D03275"
+  }
+ },
+ "questions": [
+  {
+   "id": "q01",
+   "disease": "高血圧症",
+   "memo": "健診で血圧160/100。頭が重い気がする。",
+   "answer": "amlodipine",
+   "wrong": [
+    "alendronate",
+    "lithium",
+    "adapalene",
+    "metformin"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : ノルバスク (ノルバスク錠2.5mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00058792",
+     "matched": "効能または効果 に「高血圧症」を確認",
+     "excerpt": "効能または効果 ○ 高血圧症 ○ 狭心症 5. 効能または効果に関連する注意 本剤は効果発現が緩徐であるため、緊急な治療を要する不安定狭心症には効果が期待できない。 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00615",
+     "url": "https://www.kegg.jp/entry/D00615",
+     "matched": "DISEASE: Hypertension",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "alendronate",
+    "lithium",
+    "adapalene",
+    "mirabegron"
+   ],
+   "wrongChanges": [
+    {
+     "from": "mirabegron",
+     "to": "metformin",
+     "reasons": [
+      "R6 誤答の重大な副作用(見出し)に病名: 「高血圧」: 重大な副作用 高血圧",
+      "R8 臨床知識(手動): ミラベグロンは血圧上昇に注意が要る(禁忌説明が要る)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q02",
+   "disease": "脂質異常症(高LDLコレステロール)",
+   "memo": "健診でLDLコレステロールが高いと言われた。",
+   "answer": "atorvastatin",
+   "wrong": [
+    "latanoprost",
+    "olopatadine",
+    "oseltamivir",
+    "glucagon"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : リピトール (リピトール錠5mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00045997",
+     "matched": "効能または効果 に「高コレステロール血症」を確認",
+     "excerpt": "効能または効果 ○ 高コレステロール血症 ○ 家族性高コレステロール血症 5. 効能または効果に関連する注意 5.1 適用の前に十分な検査を実施し、高コレステロール血症、家族性高コレステロール血症であることを確認した上で本剤の適用を考慮する",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D02258",
+     "url": "https://www.kegg.jp/entry/D02258",
+     "matched": "DISEASE: Hypercholesterolemia",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q03",
+   "disease": "血栓塞栓症の予防",
+   "memo": "心房細動があり、血栓を防ぐ薬を続ける必要がある。",
+   "answer": "warfarin",
+   "wrong": [
+    "mirabegron",
+    "sertraline",
+    "thiamazole",
+    "isoniazid"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : ワルファリンK (ワルファリンK錠0.5mg「NP」 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00072046",
+     "matched": "効能または効果 に「血栓塞栓症」を確認",
+     "excerpt": "効能または効果 血栓塞栓症（静脈血栓症、心筋梗塞症、肺塞栓症、脳塞栓症、緩徐に進行する脳血栓症等）の治療及び予防 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D01280",
+     "url": "https://www.kegg.jp/entry/D01280",
+     "matched": "EFFICACY: Anticoagulant, Vitamin K antagonist",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q04",
+   "disease": "狭心症(発作時)",
+   "memo": "階段で胸がしめつけられる発作が出る。",
+   "answer": "nitroglycerin",
+   "wrong": [
+    "fexofenadine",
+    "allopurinol",
+    "acetaminophen",
+    "mecobalamin"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : ニトロペン (ニトロペン舌下錠0.3mg)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00052507",
+     "matched": "効能または効果 に「狭心症」を確認",
+     "excerpt": "効能または効果 狭心症 、 心筋梗塞 、心臓喘息、アカラジアの一時的緩解 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00515",
+     "url": "https://www.kegg.jp/entry/D00515",
+     "matched": "DISEASE: Angina pectoris",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "fexofenadine",
+    "allopurinol",
+    "colchicine",
+    "mirabegron"
+   ],
+   "wrongChanges": [
+    {
+     "from": "colchicine",
+     "to": "acetaminophen",
+     "reasons": [
+      "R5 誤答の特定背景(慎重)に病名: 「心疾患」: …る患者 9.1.1 衰弱の著しい患者（特に腎疾患、胃腸疾患、心疾患を有する患者） 腎疾患、胃腸疾患、心疾患を悪化させるおそれが…"
+     ]
+    },
+    {
+     "from": "mirabegron",
+     "to": "mecobalamin",
+     "reasons": [
+      "R4 誤答の警告・禁忌に病名: 「心疾患」: …1 本剤の成分に対し過敏症の既往歴のある患者 2.2 重篤な心疾患を有する患者［心拍数増加等が報告されており、症状が悪化するお…",
+      "R8 臨床知識(手動): ミラベグロンは重篤な心疾患で禁忌(禁忌説明が要る)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q05",
+   "disease": "浮腫(むくみ)",
+   "memo": "足のむくみがひどく、靴がきつい。",
+   "answer": "furosemide",
+   "wrong": [
+    "sumatriptan",
+    "lansoprazole",
+    "magnesiumoxide",
+    "colchicine"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : フロセミド (フロセミド細粒4％「EMEC」)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00043290",
+     "matched": "効能または効果 に「浮腫」を確認",
+     "excerpt": "効能または効果 高血圧症 （本態性、腎性等）、 悪性高血圧 、心性浮腫（うっ血性心不全）、腎性浮腫、肝性浮腫、月経前緊張症、末梢血管障害による浮腫、尿路結石排出促進 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00331",
+     "url": "https://www.kegg.jp/entry/D00331",
+     "matched": "EFFICACY: Diuretic",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q06",
+   "disease": "2型糖尿病",
+   "memo": "HbA1cが高い。食事療法だけでは下がらない。",
+   "answer": "metformin",
+   "wrong": [
+    "tamsulosin",
+    "colchicine",
+    "donepezil",
+    "terbinafine"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : メトグルコ (メトグルコ錠250mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00061908",
+     "matched": "効能または効果 に「糖尿病」を確認",
+     "excerpt": "効能または効果 ○ 2型糖尿病 ただし、下記のいずれかの治療で十分な効果が得られない場合に限る。 (1)食事療法・運動療法のみ (2)食事療法・運動療法に加えてスルホニルウレア剤を使用 ○ 多嚢胞性卵巣症候群 における排卵誘発、 多嚢胞性卵",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00944",
+     "url": "https://www.kegg.jp/entry/D00944",
+     "matched": "DISEASE: Type 2 diabetes mellitus",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "tamsulosin",
+    "metoclopramide",
+    "methotrexate",
+    "terbinafine"
+   ],
+   "wrongChanges": [
+    {
+     "from": "metoclopramide",
+     "to": "colchicine",
+     "reasons": [
+      "R7 正解と名前が似る: 名前が似ている(先頭一致2字, 2文字組の一致率0.17)"
+     ]
+    },
+    {
+     "from": "methotrexate",
+     "to": "donepezil",
+     "reasons": [
+      "R7 正解と名前が似る: 名前が似ている(先頭一致2字, 2文字組の一致率0.17)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q07",
+   "disease": "低血糖(重症時の備え)",
+   "memo": "インスリン治療中。意識が落ちる低血糖に備えたい。",
+   "answer": "glucagon",
+   "wrong": [
+    "isoniazid",
+    "levodopa",
+    "atomoxetine",
+    "furosemide"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : グルカゴンG (グルカゴンGノボ注射用1mg)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00071917",
+     "matched": "効能または効果 に「低血糖」を確認",
+     "excerpt": "効能または効果 ○消化管のX線及び内視鏡検査の前処置 ○低血糖時の救急処置 ○成長ホルモン分泌機能検査 ○肝型糖原病検査 ○胃の内視鏡的治療の前処置 5. 効能または効果に関連する注意 ＜低血糖時の救急処置＞ 5.1 血糖上昇作用は、主とし",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00116",
+     "url": "https://www.kegg.jp/entry/D00116",
+     "matched": "EFFICACY: Glucagon receptor agonist (Antidiabetic/Diagnostic)",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "isoniazid",
+    "levodopa",
+    "atomoxetine",
+    "levofloxacin"
+   ],
+   "wrongChanges": [
+    {
+     "from": "levofloxacin",
+     "to": "furosemide",
+     "reasons": [
+      "R6 誤答の重大な副作用(見出し)に病名: 「低血糖」: 重大な副作用 低血糖",
+      "R9 誤答どうしの名前が似る: 名前が似ている(先頭一致2字, 2文字組の一致率0.20)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q08",
+   "disease": "甲状腺機能低下症",
+   "memo": "だるさ・寒がり。甲状腺ホルモンが足りないと言われた。",
+   "answer": "levothyroxine",
+   "wrong": [
+    "metoclopramide",
+    "epinephrine",
+    "salbutamol",
+    "levetiracetam"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : チラーヂン (チラーヂンS錠12.5μg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00060631",
+     "matched": "効能または効果 に「甲状腺機能低下症」を確認",
+     "excerpt": "効能または効果 粘液水腫、クレチン病、 甲状腺機能低下症 （原発性及び下垂体性）、甲状腺腫 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D01010",
+     "url": "https://www.kegg.jp/entry/D01010",
+     "matched": "DISEASE: Hypothyroidism",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "metoclopramide",
+    "lithium",
+    "atorvastatin",
+    "levetiracetam"
+   ],
+   "wrongChanges": [
+    {
+     "from": "lithium",
+     "to": "epinephrine",
+     "reasons": [
+      "R5 誤答の特定背景(慎重)に病名: 「甲状腺機能低下」: …8.5 参照］ 9.1.4 甲状腺機能亢進又は低下症の患者 甲状腺機能低下を起こすおそれがあるため、甲状腺機能亢進症の診断を誤らせる可…",
+      "R6 誤答の重大な副作用(見出し)に病名: 「甲状腺機能低下」: 重大な副作用 甲状腺機能低下症、甲状腺炎",
+      "R8 臨床知識(手動): リチウムは甲状腺機能低下を起こしうる(禁忌説明が要る)"
+     ]
+    },
+    {
+     "from": "atorvastatin",
+     "to": "salbutamol",
+     "reasons": [
+      "R5 誤答の特定背景(慎重)に病名: 「甲状腺機能低下」: …2 横紋筋融解症があらわれやすいとの報告がある以下の患者 ・甲状腺機能低下症の患者 ・遺伝性の筋疾患（筋ジストロフィー等）又はその家族…"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q09",
+   "disease": "バセドウ病(甲状腺機能亢進症)",
+   "memo": "動悸・汗・体重減少。甲状腺ホルモンが多すぎる。",
+   "answer": "thiamazole",
+   "wrong": [
+    "mirabegron",
+    "terbinafine",
+    "colchicine",
+    "atomoxetine"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : メルカゾール (メルカゾール錠2.5mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00069326",
+     "matched": "効能または効果 に「甲状腺機能亢進症」を確認",
+     "excerpt": "効能または効果 甲状腺機能亢進症 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00401",
+     "url": "https://www.kegg.jp/entry/D00401",
+     "matched": "DISEASE: Graves' disease / Hyperthyroidism",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "mirabegron",
+    "terbinafine",
+    "epinephrine",
+    "atomoxetine"
+   ],
+   "wrongChanges": [
+    {
+     "from": "epinephrine",
+     "to": "colchicine",
+     "reasons": [
+      "R5 誤答の特定背景(慎重)に病名: 「甲状腺機能亢進」: …管等の攣縮及び基質的閉塞があらわれるおそれがある。 (4) 甲状腺機能亢進症の患者 頻脈、心房細動がみられることがあり、本剤の投与によ…",
+      "R8 臨床知識(手動): 甲状腺機能亢進症ではアドレナリンに注意が要る(禁忌説明が要る)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q10",
+   "disease": "痛風・高尿酸血症",
+   "memo": "尿酸値が高く、痛風をくり返している。",
+   "answer": "allopurinol",
+   "wrong": [
+    "tiotropium",
+    "latanoprost",
+    "magnesiumoxide",
+    "levetiracetam"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : アロプリノール (アロプリノール錠50mg「アメル」 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00072103",
+     "matched": "効能または効果 に「痛風」を確認",
+     "excerpt": "効能または効果 下記の場合における高尿酸血症の是正 痛風 、高尿酸血症を伴う高血圧症 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00224",
+     "url": "https://www.kegg.jp/entry/D00224",
+     "matched": "DISEASE: Primary or secondary gout / EFFICACY: Uric acid biosynthesis inhibitor",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q11",
+   "disease": "痛風発作",
+   "memo": "足の親指の付け根が急に腫れて痛い。",
+   "answer": "colchicine",
+   "wrong": [
+    "atorvastatin",
+    "dimenhydrinate",
+    "famotidine",
+    "donepezil"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : コルヒチン (コルヒチン錠0.5mg「タカタ」)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00058355",
+     "matched": "効能または効果 に「痛風発作」を確認",
+     "excerpt": "効能または効果 ○ 痛風発作 の緩解及び予防 ○ 家族性地中海熱 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00570",
+     "url": "https://www.kegg.jp/entry/D00570",
+     "matched": "DISEASE: Gout flares",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q12",
+   "disease": "骨粗鬆症",
+   "memo": "骨密度が低く、骨折しやすいと言われた。",
+   "answer": "alendronate",
+   "wrong": [
+    "nitroglycerin",
+    "levetiracetam",
+    "lithium",
+    "entecavir"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : アレンドロン酸 (アレンドロン酸錠35mg「VTRS」)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00070332",
+     "matched": "効能または効果 に「骨粗鬆症」を確認",
+     "excerpt": "効能または効果 骨粗鬆症 5. 効能または効果に関連する注意 本剤の適用にあたっては、日本骨代謝学会の診断基準等を参考に、骨粗鬆症との診断が確定している患者を対象とすること。 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00939",
+     "url": "https://www.kegg.jp/entry/D00939",
+     "matched": "DISEASE: Osteoporosis",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q13",
+   "disease": "関節リウマチ",
+   "memo": "朝、手の関節がこわばって腫れる。",
+   "answer": "methotrexate",
+   "wrong": [
+    "levetiracetam",
+    "sumatriptan",
+    "levodopa",
+    "sertraline"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : リウマトレックス (リウマトレックスカプセル2mg)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00045664",
+     "matched": "効能または効果 に「関節リウマチ」を確認",
+     "excerpt": "効能または効果 ○ 関節リウマチ ○局所療法で効果不十分な 尋常性乾癬 ○乾癬性関節炎、 膿疱性乾癬 、 乾癬性紅皮症 ○関節症状を伴う 若年性特発性関節炎 5. 効能または効果に関連する注意 ＜局所療法で効果不十分な尋常性乾癬、乾癬性関節",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00142",
+     "url": "https://www.kegg.jp/entry/D00142",
+     "matched": "DISEASE: Rheumatoid arthritis",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q14",
+   "disease": "アトピー性皮膚炎",
+   "memo": "顔や首の湿疹がかゆくて治らない。",
+   "answer": "tacrolimus",
+   "wrong": [
+    "warfarin",
+    "levodopa",
+    "nitroglycerin",
+    "levetiracetam"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : プロトピック (プロトピック軟膏0.03％小児用)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00049740",
+     "matched": "効能または効果 に「アトピー性皮膚炎」を確認",
+     "excerpt": "効能または効果 アトピー性皮膚炎 5. 効能または効果に関連する注意 ステロイド外用剤等の既存療法では効果が不十分又は副作用によりこれらの投与ができないなど、本剤による治療がより適切と考えられる場合に使用する。 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00107",
+     "url": "https://www.kegg.jp/entry/D00107",
+     "matched": "DISEASE: Atopic dermatitis",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q15",
+   "disease": "逆流性食道炎",
+   "memo": "胸やけ・すっぱいものが上がってくる。",
+   "answer": "lansoprazole",
+   "wrong": [
+    "sumatriptan",
+    "mecobalamin",
+    "tamsulosin",
+    "atomoxetine"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : タケプロン (タケプロンOD錠15 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00048642",
+     "matched": "効能または効果 に「逆流性食道炎」を確認",
+     "excerpt": "効能または効果 ＜タケプロンOD錠15＞ ○ 胃潰瘍 、 十二指腸潰瘍 、 吻合部潰瘍 、 逆流性食道炎 、Zollinger-Ellison症候群、 非びらん性胃食道逆流症 、低用量アスピリン投与時における 胃潰瘍又は十二指腸潰瘍 の再発",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00355",
+     "url": "https://www.kegg.jp/entry/D00355",
+     "matched": "DISEASE: Gastroesophageal reflux disease",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q16",
+   "disease": "胃潰瘍",
+   "memo": "みぞおちが痛む。内視鏡で胃潰瘍と言われた。",
+   "answer": "famotidine",
+   "wrong": [
+    "entecavir",
+    "allopurinol",
+    "glucagon",
+    "levofloxacin"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : ガスター (ガスター錠10mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00049384",
+     "matched": "効能または効果 に「胃潰瘍」を確認",
+     "excerpt": "効能または効果 ○ 胃潰瘍 、 十二指腸潰瘍 、 吻合部潰瘍 、上部消化管出血（ 消化性潰瘍 、急性ストレス潰瘍、出血性胃炎による）、 逆流性食道炎 、 Zollinger-Ellison症候群 ○下記疾患の胃粘膜病変（びらん、出血、発赤、",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00318",
+     "url": "https://www.kegg.jp/entry/D00318",
+     "matched": "DISEASE: Gastric ulcer",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q17",
+   "disease": "便秘症",
+   "memo": "もう4日出ていない。おなかが張る。",
+   "answer": "magnesiumoxide",
+   "wrong": [
+    "tiotropium",
+    "allopurinol",
+    "tacrolimus",
+    "terbinafine"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : マグミット (マグミット錠100mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00071811",
+     "matched": "効能または効果 に「便秘」を確認",
+     "excerpt": "効能または効果 ○下記疾患における制酸作用と症状の改善 胃・十二指腸潰瘍 、胃炎（急・慢性胃炎、薬剤性胃炎を含む）、上部消化管機能異常（神経性食思不振、いわゆる胃下垂症、胃酸過多症を含む） ○便秘症 ○尿路蓚酸カルシウム結石の発生予防 6.",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D01167",
+     "url": "https://www.kegg.jp/entry/D01167",
+     "matched": "EFFICACY: Antacid, Laxative",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q18",
+   "disease": "下痢症",
+   "memo": "水のような下痢が続いている(発熱・血便なし)。",
+   "answer": "loperamide",
+   "wrong": [
+    "olopatadine",
+    "alendronate",
+    "oseltamivir",
+    "levofloxacin"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : ロペミン (ロペミンカプセル1mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00051670",
+     "matched": "効能または効果 に「下痢」を確認",
+     "excerpt": "効能または効果 下痢症 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00729",
+     "url": "https://www.kegg.jp/entry/D00729",
+     "matched": "EFFICACY: Antidiarrheal",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q19",
+   "disease": "吐き気・嘔吐",
+   "memo": "胃がむかむかして吐き気がおさまらない。",
+   "answer": "metoclopramide",
+   "wrong": [
+    "atomoxetine",
+    "alendronate",
+    "zolpidem",
+    "levofloxacin"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : プリンペラン (プリンペランシロップ0.1％)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00054236",
+     "matched": "効能または効果 に「悪心」を確認",
+     "excerpt": "効能または効果 ○次の場合における消化器機能異常（悪心・嘔吐・食欲不振・腹部膨満感） 胃炎、 胃・十二指腸潰瘍 、胆嚢・胆道疾患、腎炎、尿毒症、乳幼児嘔吐、薬剤（制癌剤・抗生物質・抗結核剤・麻酔剤）投与時、胃内・気管内挿管時、放射線照射時、",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00726",
+     "url": "https://www.kegg.jp/entry/D00726",
+     "matched": "EFFICACY: Anti-emetic, Prokinetic",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q20",
+   "disease": "乗り物酔い",
+   "memo": "明日バスで長距離移動。すぐ酔ってしまう。",
+   "answer": "dimenhydrinate",
+   "wrong": [
+    "tacrolimus",
+    "mirabegron",
+    "levetiracetam",
+    "amlodipine"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : ドラマミン (ドラマミン錠50mg)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00057174",
+     "matched": "効能または効果 に「動揺病」を確認",
+     "excerpt": "効能または効果 ○下記の疾患又は状態に伴う悪心・嘔吐・眩暈 動揺病、 メニエール症候群 、放射線宿酔 ○手術後の悪心・嘔吐 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00520",
+     "url": "https://www.kegg.jp/entry/D00520",
+     "matched": "EFFICACY: Anti-emetic, Antivertigo",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q21",
+   "disease": "帯状疱疹",
+   "memo": "脇腹に帯のようにピリピリした水ぶくれが出た。",
+   "answer": "valaciclovir",
+   "wrong": [
+    "levetiracetam",
+    "lithium",
+    "alendronate",
+    "dextromethorphan"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : バラシクロビル (バラシクロビル錠500mg「NIG」)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00070578",
+     "matched": "効能または効果 に「帯状疱疹」を確認",
+     "excerpt": "効能または効果 ○ 単純疱疹 ○造血幹細胞移植における 単純ヘルペスウイルス感染症 （ 単純疱疹 ）の発症抑制 ○ 帯状疱疹 ○ 水痘 ○ 性器ヘルペス の再発抑制 5. 効能または効果に関連する注意 ＜性器ヘルペスの再発抑制＞ 5.1 本",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00398",
+     "url": "https://www.kegg.jp/entry/D00398",
+     "matched": "DISEASE: Herpes zoster",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q22",
+   "disease": "インフルエンザ",
+   "memo": "38.9℃の発熱、検査でインフルエンザA型陽性。",
+   "answer": "oseltamivir",
+   "wrong": [
+    "nitroglycerin",
+    "levetiracetam",
+    "loperamide",
+    "risperidone"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : タミフル (タミフルドライシロップ3％)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00050038",
+     "matched": "効能または効果 に「インフルエンザ」を確認",
+     "excerpt": "効能または効果 A型又はB型インフルエンザウイルス感染症 及びその予防 5. 効能または効果に関連する注意 ＜治療＞ 5.1 A型又はB型インフルエンザウイルス感染症と診断された患者のみが対象となるが、抗ウイルス薬の投与がA型又はB型インフ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00900",
+     "url": "https://www.kegg.jp/entry/D00900",
+     "matched": "DISEASE: Influenza",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q23",
+   "disease": "膀胱炎(尿路感染症)",
+   "memo": "トイレが近く、排尿時にしみるように痛い。",
+   "answer": "levofloxacin",
+   "wrong": [
+    "lansoprazole",
+    "sumatriptan",
+    "metoclopramide",
+    "atomoxetine"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : クラビット (クラビット点滴静注バッグ500mg／100mL 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00059158",
+     "matched": "効能または効果 に「膀胱炎」を確認",
+     "excerpt": "効能または効果 ＜適応菌種＞ レボフロキサシンに感性のブドウ球菌属、レンサ球菌属、肺炎球菌、腸球菌属、モラクセラ（ブランハメラ）・カタラーリス、炭疽菌、大腸菌、チフス菌、パラチフス菌、シトロバクター属、クレブシエラ属、エンテロバクター属、セ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00588",
+     "url": "https://www.kegg.jp/entry/D00588",
+     "matched": "DISEASE: Uncomplicated urinary tract infections",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q24",
+   "disease": "結核",
+   "memo": "検査で結核と診断された。",
+   "answer": "isoniazid",
+   "wrong": [
+    "adapalene",
+    "famotidine",
+    "sertraline",
+    "glucagon"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : イスコチン (イスコチン注100mg)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00054957",
+     "matched": "効能または効果 に「結核」を確認",
+     "excerpt": "効能または効果 ＜適応菌種＞ 本剤に感性の結核菌 ＜適応症＞ 肺結核 及びその他の 結核症 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00346",
+     "url": "https://www.kegg.jp/entry/D00346",
+     "matched": "DISEASE: Tuberculosis",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q25",
+   "disease": "爪白癬(爪の水虫)",
+   "memo": "足の爪が白く濁って厚くなってきた。",
+   "answer": "terbinafine",
+   "wrong": [
+    "magnesiumoxide",
+    "alendronate",
+    "risperidone",
+    "nitroglycerin"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : テルビナフィン (テルビナフィン錠125mg「TCK」)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00068807",
+     "matched": "効能または効果 に「爪白癬」を確認",
+     "excerpt": "効能または効果 皮膚糸状菌（トリコフィトン属、ミクロスポルム属、エピデルモフィトン属）、カンジダ属、スポロトリックス属、ホンセカエア属による下記感染症。 但し、外用抗真菌剤では治療困難な患者に限る。 ○深在性皮膚真菌症 白癬 性肉芽腫、 ス",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D02219",
+     "url": "https://www.kegg.jp/entry/D02219",
+     "matched": "DISEASE: Onychomycosis / Tinea unguium",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q26",
+   "disease": "B型慢性肝炎",
+   "memo": "B型肝炎ウイルスの量が多いと言われた。",
+   "answer": "entecavir",
+   "wrong": [
+    "tacrolimus",
+    "levodopa",
+    "allopurinol",
+    "lithium"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : バラクルード (バラクルード錠0.5mg)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00052162",
+     "matched": "効能または効果 に「肝炎」を確認",
+     "excerpt": "効能または効果 B型肝炎 ウイルスの増殖を伴い肝機能の異常が確認されたB型慢性肝疾患における B型肝炎 ウイルスの増殖抑制 5. 効能または効果に関連する注意 本剤投与開始に先立ち，HBV DNA，HBV DNAポリメラーゼあるいはHBe抗",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D04008",
+     "url": "https://www.kegg.jp/entry/D04008",
+     "matched": "DISEASE: Hepatitis B",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q27",
+   "disease": "気管支喘息(発作時)",
+   "memo": "ゼーゼーして息が苦しい発作が出る。",
+   "answer": "salbutamol",
+   "wrong": [
+    "thiamazole",
+    "ferrouscitrate",
+    "sumatriptan",
+    "atorvastatin"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : サルタノール (サルタノールインヘラー100μg)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00056515",
+     "matched": "効能または効果 に「気管支喘息」を確認",
+     "excerpt": "効能または効果 下記疾患の気道閉塞性障害にもとづく諸症状の緩解 ○ 気管支喘息 ○小児 喘息 ○ 肺気腫 ○急・ 慢性気管支炎 ○ 肺結核 5. 効能または効果に関連する注意 本剤は喘息発作に対する対症療法剤であるので、本剤の使用は発作発現",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00683",
+     "url": "https://www.kegg.jp/entry/D00683",
+     "matched": "EFFICACY: Bronchodilator, beta2-Adrenergic receptor agonist",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q28",
+   "disease": "COPD(慢性閉塞性肺疾患)",
+   "memo": "長年の喫煙歴。坂道で息切れがする。",
+   "answer": "tiotropium",
+   "wrong": [
+    "lansoprazole",
+    "allopurinol",
+    "furosemide",
+    "mirabegron"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : スピリーバ (スピリーバ1.25μgレスピマット60吸入 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00066476",
+     "matched": "効能または効果 に「慢性閉塞性肺疾患」を確認",
+     "excerpt": "効能または効果 ＜スピリーバ1.25μgレスピマット60吸入＞ 下記疾患の気道閉塞性障害に基づく諸症状の緩解 気管支喘息 ＜スピリーバ2.5μgレスピマット60吸入＞ 下記疾患の気道閉塞性障害に基づく諸症状の緩解 慢性閉塞性肺疾患 （ 慢性",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D01929",
+     "url": "https://www.kegg.jp/entry/D01929",
+     "matched": "DISEASE: Chronic obstructive pulmonary disease",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "lansoprazole",
+    "allopurinol",
+    "zolpidem",
+    "mirabegron"
+   ],
+   "wrongChanges": [
+    {
+     "from": "zolpidem",
+     "to": "furosemide",
+     "reasons": [
+      "R5 誤答の特定背景(慎重)に病名: 「肺気腫」: …意 9.1 合併症・既往歴等のある患者 9.1.1 肺性心、肺気腫、気管支喘息及び脳血管障害の急性期などで呼吸機能が高度に低下…"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q29",
+   "disease": "せき",
+   "memo": "かぜのあと、乾いたせきだけが残っている。",
+   "answer": "dextromethorphan",
+   "wrong": [
+    "lithium",
+    "loperamide",
+    "latanoprost",
+    "magnesiumoxide"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : デキストロメトルファン臭化水素酸塩 (デキストロメトルファン臭化水素酸塩錠15mg「ツルハラ」 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00069192",
+     "matched": "効能または効果 に「咳嗽」を確認",
+     "excerpt": "効能または効果 ○下記疾患に伴う咳嗽 感冒、急性気管支炎、慢性気管支炎、 気管支拡張症 、肺炎、肺結核、上気道炎（咽喉頭炎、鼻カタル） ○気管支造影術および気管支鏡検査時の咳嗽 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00848",
+     "url": "https://www.kegg.jp/entry/D00848",
+     "matched": "EFFICACY: Antitussive",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q30",
+   "disease": "アナフィラキシー(への備え)",
+   "memo": "ハチに刺されて全身じんましんと息苦しさが出たことがある。",
+   "answer": "epinephrine",
+   "wrong": [
+    "alendronate",
+    "metformin",
+    "terbinafine",
+    "valaciclovir"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : エピペン (エピペン注射液0.3mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00050569",
+     "matched": "効能または効果 に「アナフィラキシー」を確認",
+     "excerpt": "効能または効果 蜂毒、食物及び薬物等に起因する アナフィラキシー反応 に対する補助治療（アナフィラキシーの既往のある人またはアナフィラキシーを発現する危険性の高い人に限る） 5. 効能または効果に関連する注意 5.1 アナフィラキシー反応は",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00095",
+     "url": "https://www.kegg.jp/entry/D00095",
+     "matched": "DISEASE: Anaphylaxis",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "alendronate",
+    "glucagon",
+    "terbinafine",
+    "valaciclovir"
+   ],
+   "wrongChanges": [
+    {
+     "from": "glucagon",
+     "to": "metformin",
+     "reasons": [
+      "R8 臨床知識(手動): β遮断薬服用中のアナフィラキシーでアドレナリンが効きにくい時にグルカゴンを使うことがある(正解になりうる)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q31",
+   "disease": "花粉症(季節性アレルギー性鼻炎)",
+   "memo": "春になるとくしゃみ・鼻水が止まらない。",
+   "answer": "fexofenadine",
+   "wrong": [
+    "levothyroxine",
+    "warfarin",
+    "amlodipine",
+    "sumatriptan"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : アレグラ (アレグラ錠30mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00070823",
+     "matched": "効能または効果 に「アレルギー性鼻炎」を確認",
+     "excerpt": "効能または効果 ○ アレルギー性鼻炎 ○蕁麻疹 ○皮膚疾患（湿疹・皮膚炎、皮膚そう痒症、 アトピー性皮膚炎 ）に伴うそう痒 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00671",
+     "url": "https://www.kegg.jp/entry/D00671",
+     "matched": "DISEASE: Seasonal allergic rhinitis",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q32",
+   "disease": "じんましん(アレルギー性のかゆみ)",
+   "memo": "皮膚が赤く盛り上がってかゆい。",
+   "answer": "olopatadine",
+   "wrong": [
+    "nitroglycerin",
+    "metoclopramide",
+    "magnesiumoxide",
+    "lansoprazole"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : アレロック (アレロック顆粒0.5％)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00059790",
+     "matched": "効能または効果 に「麻疹」を確認",
+     "excerpt": "効能または効果 成人 アレルギー性鼻炎 、じん麻疹、皮膚疾患に伴うそう痒（湿疹・皮膚炎、痒疹、皮膚そう痒症、 尋常性乾癬 、多形滲出性紅斑） 小児 アレルギー性鼻炎 、じん麻疹、皮膚疾患（湿疹・皮膚炎、皮膚そう痒症）に伴うそう痒 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D01192",
+     "url": "https://www.kegg.jp/entry/D01192",
+     "matched": "EFFICACY: Antiallergic, H1 receptor antagonist",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "nitroglycerin",
+    "famotidine",
+    "magnesiumoxide",
+    "lansoprazole"
+   ],
+   "wrongChanges": [
+    {
+     "from": "famotidine",
+     "to": "metoclopramide",
+     "reasons": [
+      "R8 臨床知識(手動): H2遮断薬はじんましんに抗ヒスタミン薬と併用されることがある(正解になりうる)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q33",
+   "disease": "にきび(尋常性ざ瘡)",
+   "memo": "おでこと頬ににきびが増えた。",
+   "answer": "adapalene",
+   "wrong": [
+    "allopurinol",
+    "sertraline",
+    "epinephrine",
+    "levothyroxine"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : ディフェリン (ディフェリンゲル0.1％)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00055790",
+     "matched": "効能または効果 に「尋常性ざ瘡」を確認",
+     "excerpt": "効能または効果 尋常性ざ瘡 5. 効能または効果に関連する注意 5.1 本剤は顔面の尋常性ざ瘡にのみ使用すること。 5.2 顔面以外の部位（胸部、背部等）における有効性・安全性は確立していない。 5.3 結節及び嚢腫には、他の適切な処置を行",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D01112",
+     "url": "https://www.kegg.jp/entry/D01112",
+     "matched": "DISEASE: Acne vulgaris",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "allopurinol",
+    "sertraline",
+    "levofloxacin",
+    "levothyroxine"
+   ],
+   "wrongChanges": [
+    {
+     "from": "levofloxacin",
+     "to": "epinephrine",
+     "reasons": [
+      "R8 臨床知識(手動): レボフロキサシン錠(内服)の効能に「ざ瘡(化膿性炎症を伴うもの)」がある(正解になりうる)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q34",
+   "disease": "パーキンソン病",
+   "memo": "手がふるえ、動き出しがゆっくりになった。",
+   "answer": "levodopa",
+   "wrong": [
+    "epinephrine",
+    "oseltamivir",
+    "loperamide",
+    "latanoprost"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : ドパストン (ドパストン静注25mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00056046",
+     "matched": "効能または効果 に「パーキンソン」を確認",
+     "excerpt": "効能または効果 ○ パーキンソン病 ○ パーキンソン症候群 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00059",
+     "url": "https://www.kegg.jp/entry/D00059",
+     "matched": "DISEASE: Parkinson disease",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "risperidone",
+    "oseltamivir",
+    "loperamide",
+    "latanoprost"
+   ],
+   "wrongChanges": [
+    {
+     "from": "risperidone",
+     "to": "epinephrine",
+     "reasons": [
+      "R5 誤答の特定背景(慎重)に病名: 「パーキンソン」: …延長症候群の患者 QTが延長する可能性がある。 9.1.3 パーキンソン病又はレビー小体型認知症のある患者 悪性症候群が起こりやすく…",
+      "R8 臨床知識(手動): リスペリドンはパーキンソン症状を悪化させうる(禁忌説明が要る)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q35",
+   "disease": "てんかん",
+   "memo": "けいれん発作をくり返している。",
+   "answer": "levetiracetam",
+   "wrong": [
+    "olopatadine",
+    "methotrexate",
+    "fexofenadine",
+    "salbutamol"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : イーケプラ (イーケプラ点滴静注500mg)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00063084",
+     "matched": "効能または効果 に「てんかん」を確認",
+     "excerpt": "効能または効果 ○一時的に経口投与ができない患者における、下記の治療に対するレベチラセタム経口製剤の代替療法 ・てんかん患者の部分発作（二次性全般化発作を含む） ・他の抗てんかん薬で十分な効果が認められないてんかん患者の強直間代発作に対する",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00709",
+     "url": "https://www.kegg.jp/entry/D00709",
+     "matched": "EFFICACY: Antiepileptic",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "olopatadine",
+    "famotidine",
+    "fexofenadine",
+    "zolpidem"
+   ],
+   "wrongChanges": [
+    {
+     "from": "famotidine",
+     "to": "methotrexate",
+     "reasons": [
+      "R6 誤答の重大な副作用(見出し)に病名: 「痙攣」: 重大な副作用 意識障害、痙攣"
+     ]
+    },
+    {
+     "from": "zolpidem",
+     "to": "salbutamol",
+     "reasons": [
+      "R5 誤答の特定背景(慎重)に病名: 「痙攣」: …り、妊娠後期に本剤を投与された患者より出生した児に呼吸抑制、痙攣、振戦、易刺激性、哺乳困難等の離脱症状があらわれることがある…",
+      "R8 臨床知識(手動): 同じ中枢抑制系で、けいれんと結びつけやすい(紛らわしい)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q36",
+   "disease": "片頭痛(発作時)",
+   "memo": "ズキズキする頭痛と吐き気、光がまぶしい。",
+   "answer": "sumatriptan",
+   "wrong": [
+    "salbutamol",
+    "amlodipine",
+    "mirabegron",
+    "zolpidem"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : イミグラン (イミグランキット皮下注3mg)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00054481",
+     "matched": "効能または効果 に「片頭痛」を確認",
+     "excerpt": "効能または効果 ○片頭痛 ○ 群発頭痛 5. 効能または効果に関連する注意 5.1 本剤は国際頭痛学会による片頭痛、群発頭痛診断基準 1) により「前兆のない片頭痛」、「前兆のある片頭痛」あるいは群発頭痛と確定診断が行われた場合にのみ投与す",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00451",
+     "url": "https://www.kegg.jp/entry/D00451",
+     "matched": "EFFICACY: Antimigraine",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "salbutamol",
+    "amlodipine",
+    "mirabegron",
+    "dimenhydrinate"
+   ],
+   "wrongChanges": [
+    {
+     "from": "dimenhydrinate",
+     "to": "zolpidem",
+     "reasons": [
+      "R3 誤答の効能に症状語: 「悪心」: …4. 効能または効果 ○下記の疾患又は状態に伴う悪心・嘔吐・眩暈 動揺病、 メニエール症候群 、放射線宿酔 ○手…"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q37",
+   "disease": "発熱(小児の解熱・鎮痛)",
+   "memo": "子どもが38.5℃の熱を出して、ぐったりしている。",
+   "answer": "acetaminophen",
+   "wrong": [
+    "allopurinol",
+    "isoniazid",
+    "fexofenadine",
+    "warfarin"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : カロナール (カロナール坐剤100 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00065782",
+     "matched": "効能または効果 に「解熱」を確認",
+     "excerpt": "効能または効果 小児科領域における解熱・鎮痛",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00217",
+     "url": "https://www.kegg.jp/entry/D00217",
+     "matched": "EFFICACY: Analgesic, Antipyretic",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "allopurinol",
+    "isoniazid",
+    "dextromethorphan",
+    "warfarin"
+   ],
+   "wrongChanges": [
+    {
+     "from": "dextromethorphan",
+     "to": "fexofenadine",
+     "reasons": [
+      "R8 臨床知識(手動): 子どもの風邪症状の薬として結びつきやすい(紛らわしい)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q38",
+   "disease": "末梢神経障害(手足のしびれ)",
+   "memo": "手足の先がジンジンしびれる。",
+   "answer": "mecobalamin",
+   "wrong": [
+    "tiotropium",
+    "dextromethorphan",
+    "entecavir",
+    "mirabegron"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : メチコバール (メチコバール注射液500μg)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00012985",
+     "matched": "効能または効果 に「末梢性神経障害」を確認",
+     "excerpt": "効能または効果 末梢性神経障害 ビタミンB 12 欠乏による巨赤芽球性貧血 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D03246",
+     "url": "https://www.kegg.jp/entry/D03246",
+     "matched": "EFFICACY: Peripheral neuropathy agent, Supplement (vitamin B12)",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "levofloxacin",
+    "dextromethorphan",
+    "entecavir",
+    "mirabegron"
+   ],
+   "wrongChanges": [
+    {
+     "from": "levofloxacin",
+     "to": "tiotropium",
+     "reasons": [
+      "R6 誤答の重大な副作用(見出し)に病名: 「末梢神経障害」: 重大な副作用 末梢神経障害"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q39",
+   "disease": "アルツハイマー型認知症",
+   "memo": "物忘れが増え、同じ話をくり返す。",
+   "answer": "donepezil",
+   "wrong": [
+    "ferrouscitrate",
+    "tamsulosin",
+    "famotidine",
+    "thiamazole"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : アリセプト (アリセプトドライシロップ1％)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00061693",
+     "matched": "効能または効果 に「アルツハイマー型認知症」を確認",
+     "excerpt": "効能または効果 アルツハイマー型認知症 及び レビー小体型認知症 における認知症症状の進行抑制 5. 効能または効果に関連する注意 ＜効能共通＞ 5.1 本剤がアルツハイマー型認知症及びレビー小体型認知症の病態そのものの進行を抑制するという",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00670",
+     "url": "https://www.kegg.jp/entry/D00670",
+     "matched": "DISEASE: Dementia of the Alzheimer's type",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q40",
+   "disease": "うつ病",
+   "memo": "2か月以上気分が落ち込み、何も楽しくない。",
+   "answer": "sertraline",
+   "wrong": [
+    "mirabegron",
+    "valaciclovir",
+    "methotrexate",
+    "amlodipine"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : ジェイゾロフト (ジェイゾロフト錠25mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00063132",
+     "matched": "効能または効果 に「うつ病」を確認",
+     "excerpt": "効能または効果 ○ うつ病・うつ状態 ○ パニック障害 ○外傷後ストレス障害 5. 効能または効果に関連する注意 ＜効能共通＞ 5.1 抗うつ剤の投与により、24歳以下の患者で、自殺念慮、自殺企図のリスクが増加するとの報告がある。本剤の投与",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00825",
+     "url": "https://www.kegg.jp/entry/D00825",
+     "matched": "DISEASE: Major depressive disorder",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q41",
+   "disease": "不眠症",
+   "memo": "布団に入っても1時間以上眠れない。",
+   "answer": "zolpidem",
+   "wrong": [
+    "adapalene",
+    "metformin",
+    "isoniazid",
+    "acetaminophen"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : マイスリー (マイスリー錠5mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00046478",
+     "matched": "効能または効果 に「不眠症」を確認",
+     "excerpt": "効能または効果 不眠症 （統合失調症及び躁うつ病に伴う 不眠症 は除く） 5. 効能または効果に関連する注意 本剤の投与は、不眠症の原疾患を確定してから行うこと。なお、統合失調症あるいは躁うつ病に伴う不眠症には本剤の有効性は期待できない。 ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00706",
+     "url": "https://www.kegg.jp/entry/D00706",
+     "matched": "DISEASE: Insomnia",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q42",
+   "disease": "統合失調症",
+   "memo": "幻聴があり、落ち着かない。",
+   "answer": "risperidone",
+   "wrong": [
+    "mecobalamin",
+    "dextromethorphan",
+    "adapalene",
+    "methotrexate"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : リスパダール (リスパダールOD錠0.5mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00057005",
+     "matched": "効能または効果 に「統合失調症」を確認",
+     "excerpt": "効能または効果 ○ 統合失調症 ○小児期の自閉スペクトラム症に伴う易刺激性 5. 効能または効果に関連する注意 ＜小児期の自閉スペクトラム症に伴う易刺激性＞ 5.1 原則として5歳以上18歳未満の患者に使用すること。 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00426",
+     "url": "https://www.kegg.jp/entry/D00426",
+     "matched": "DISEASE: Schizophrenia",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "mecobalamin",
+    "levodopa",
+    "adapalene",
+    "methotrexate"
+   ],
+   "wrongChanges": [
+    {
+     "from": "levodopa",
+     "to": "dextromethorphan",
+     "reasons": [
+      "R8 臨床知識(手動): レボドパは幻覚・精神症状を悪化させうる(禁忌説明が要る)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q43",
+   "disease": "双極性障害(躁状態)",
+   "memo": "気分が高ぶり、眠らずに動き回ってしまう。",
+   "answer": "lithium",
+   "wrong": [
+    "thiamazole",
+    "acetaminophen",
+    "levothyroxine",
+    "mirabegron"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : リーマス (リーマス錠100 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00048293",
+     "matched": "効能または効果 に「躁病」を確認",
+     "excerpt": "効能または効果 躁病および躁うつ病の躁状態 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00801",
+     "url": "https://www.kegg.jp/entry/D00801",
+     "matched": "DISEASE: Bipolar disorder, manic episodes",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q44",
+   "disease": "ADHD(注意欠如・多動症)",
+   "memo": "忘れ物が多く、集中が続かない。",
+   "answer": "atomoxetine",
+   "wrong": [
+    "lansoprazole",
+    "ferrouscitrate",
+    "allopurinol",
+    "adapalene"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : ストラテラ (ストラテラ内用液0.4％)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00061997",
+     "matched": "効能または効果 に「注意欠陥／多動性障害」を確認",
+     "excerpt": "効能または効果 注意欠陥／多動性障害（AD/HD） 5. 効能または効果に関連する注意 5.1 6歳未満の患者における有効性及び安全性は確立していない。［ 9.7 、 17.1.1 - 17.1.3 参照］ 5.2 AD/HDの診断は、米国",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D02574",
+     "url": "https://www.kegg.jp/entry/D02574",
+     "matched": "DISEASE: Attention-deficit/hyperactivity disorder",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  },
+  {
+   "id": "q45",
+   "disease": "前立腺肥大症に伴う排尿障害",
+   "memo": "尿の勢いが弱く、出にくい。",
+   "answer": "tamsulosin",
+   "wrong": [
+    "levodopa",
+    "atorvastatin",
+    "valaciclovir",
+    "donepezil"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : タムスロシン塩酸塩 (タムスロシン塩酸塩カプセル0.1mg「NIG」 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00071017",
+     "matched": "効能または効果 に「前立腺肥大症」を確認",
+     "excerpt": "効能または効果 前立腺肥大症に伴う排尿障害 5. 効能または効果に関連する注意 5.1 本剤による治療は原因療法ではなく、対症療法であることに留意し、本剤投与により期待する効果が得られない場合は、手術療法等、他の適切な処置を考慮すること。 ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D01024",
+     "url": "https://www.kegg.jp/entry/D01024",
+     "matched": "EFFICACY: Antidysuria, alpha1-Adrenergic receptor antagonist",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "levodopa",
+    "atorvastatin",
+    "levothyroxine",
+    "donepezil"
+   ],
+   "wrongChanges": [
+    {
+     "from": "levothyroxine",
+     "to": "valaciclovir",
+     "reasons": [
+      "R9 誤答どうしの名前が似る: 名前が似ている(先頭一致2字, 2文字組の一致率0.22)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q46",
+   "disease": "過活動膀胱",
+   "memo": "急にトイレに行きたくなり、我慢できない。",
+   "answer": "mirabegron",
+   "wrong": [
+    "warfarin",
+    "levothyroxine",
+    "sumatriptan",
+    "zolpidem"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : ベタニス (ベタニス錠25mg 他)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00059757",
+     "matched": "効能または効果 に「過活動膀胱」を確認",
+     "excerpt": "効能または効果 過活動膀胱における尿意切迫感、頻尿及び切迫性尿失禁 5. 効能または効果に関連する注意 5.1 本剤を適用する際、十分な問診により臨床症状を確認するとともに、類似の症状を呈する疾患（尿路感染症、尿路結石、膀胱癌や前立腺癌など",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D09535",
+     "url": "https://www.kegg.jp/entry/D09535",
+     "matched": "EFFICACY: Overactive bladder agent",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "warfarin",
+    "levothyroxine",
+    "sumatriptan",
+    "dimenhydrinate"
+   ],
+   "wrongChanges": [
+    {
+     "from": "dimenhydrinate",
+     "to": "zolpidem",
+     "reasons": [
+      "R8 臨床知識(手動): 抗コリン作用で尿意を抑える方向に働きうる(紛らわしい)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q47",
+   "disease": "緑内障(開放隅角)",
+   "memo": "眼圧が高く、視野が少し欠けてきた。",
+   "answer": "latanoprost",
+   "wrong": [
+    "acetaminophen",
+    "risperidone",
+    "furosemide",
+    "atorvastatin"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : キサラタン (キサラタン点眼液0.005％)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00057445",
+     "matched": "効能または効果 に「緑内障」を確認",
+     "excerpt": "効能または効果 緑内障 、高眼圧症 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D00356",
+     "url": "https://www.kegg.jp/entry/D00356",
+     "matched": "DISEASE: Open-angle glaucoma",
+     "retrieved": "2026-10-27"
+    }
+   ],
+   "originalWrong": [
+    "dimenhydrinate",
+    "risperidone",
+    "furosemide",
+    "mirabegron"
+   ],
+   "wrongChanges": [
+    {
+     "from": "dimenhydrinate",
+     "to": "acetaminophen",
+     "reasons": [
+      "R8 臨床知識(手動): 抗コリン作用のある薬は緑内障で注意が要る(禁忌説明が要る)"
+     ]
+    },
+    {
+     "from": "mirabegron",
+     "to": "atorvastatin",
+     "reasons": [
+      "R5 誤答の特定背景(慎重)に病名: 「緑内障」: …ntesを含む）、QT延長を起こすことがある。 9.1.6 緑内障の患者 定期的な眼科的診察を行うこと。眼圧の上昇を招き、症状…"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q48",
+   "disease": "鉄欠乏性貧血",
+   "memo": "立ちくらみ・息切れ。血液検査で鉄が足りない。",
+   "answer": "ferrouscitrate",
+   "wrong": [
+    "alendronate",
+    "levofloxacin",
+    "latanoprost",
+    "mirabegron"
+   ],
+   "sources": [
+    {
+     "type": "添付文書(KEGG MEDICUS 医療用医薬品ページ)",
+     "title": "医療用医薬品 : クエン酸第一鉄Na (クエン酸第一鉄Na錠50mg「NIG」)",
+     "url": "https://www.kegg.jp/medicus-bin/japic_med?japic_code=00070380",
+     "matched": "効能または効果 に「鉄欠乏性貧血」を確認",
+     "excerpt": "効能または効果 鉄欠乏性貧血 6. ",
+     "retrieved": "2026-10-27"
+    },
+    {
+     "type": "KEGG DRUG",
+     "title": "KEGG DRUG D03275",
+     "url": "https://www.kegg.jp/entry/D03275",
+     "matched": "EFFICACY: Anti-anemic, Supplement (iron)",
+     "retrieved": "2026-10-27"
+    }
+   ]
+  }
+ ]
+}

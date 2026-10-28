@@ -1,0 +1,61 @@
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden;background:#dfe9ec;font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;color:#222;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block}
+#hud{position:fixed;top:calc(env(safe-area-inset-top) + 10px);left:12px;right:12px;display:flex;justify-content:space-between;font-weight:700;font-size:16px}
+#hud span{background:rgba(255,255,255,.85);padding:4px 10px;border-radius:12px}
+#timer{position:fixed;top:calc(env(safe-area-inset-top) + 48px);left:12px;right:56px;height:24px;background:rgba(255,255,255,.75);border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.15)}
+#bar{height:100%;width:100%;background:#3a9;transform-origin:left;transition:background .3s}
+#bar.warn{background:#e94}
+#bar.danger{background:#d33}
+#sec{position:absolute;right:10px;top:0;font-size:16px;line-height:22px;font-weight:800;font-variant-numeric:tabular-nums}
+#sec.low{color:#b0141c;animation:pulse .5s ease-in-out infinite alternate}
+@keyframes pulse{from{transform:scale(1)}to{transform:scale(1.18)}}
+#mute{position:fixed;top:calc(env(safe-area-inset-top) + 44px);right:12px;width:34px;height:34px;padding:0;border:1.5px solid #333;border-radius:50%;background:rgba(255,255,255,.85);color:#222;display:flex;align-items:center;justify-content:center;z-index:5}
+#mute.off{color:#888}
+#bubble{position:fixed;max-width:230px;background:#fff;border:2px solid #222;border-radius:14px;padding:6px 10px;font-size:16px;font-weight:700;transform:translate(-50%,-100%);pointer-events:none;white-space:pre-wrap}
+#bubble:after{content:"";position:absolute;left:50%;bottom:-10px;margin-left:-6px;border:6px solid transparent;border-top:8px solid #222}
+#qpanel{position:fixed;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom) + 22px);display:flex;flex-direction:column;gap:10px;max-width:520px;margin:0 auto}
+#rx{background:#fffdf4;border:2px solid #333;border-radius:6px;padding:8px 12px 9px;font-size:16px;box-shadow:0 3px 0 rgba(0,0,0,.25)}
+.rxhead{display:flex;justify-content:space-between;font-weight:700;font-size:14px;color:#555;border-bottom:1px dashed #999;padding-bottom:3px;margin-bottom:5px;letter-spacing:.2em}
+.rxrow{display:flex;gap:8px;margin:4px 0;line-height:1.45;align-items:baseline}
+.rxrow b{flex:0 0 2.4em;color:#666;font-weight:600;font-size:14px}
+#rxdis{font-weight:800;font-size:21px;line-height:1.3}
+#rxmemo{font-size:16px}
+#rxres{font-weight:800;font-size:17px;min-height:0}
+#rxres:empty{display:none}
+#choices{display:flex;flex-direction:column;gap:10px}
+#choices button{min-height:58px;padding:4px 10px;font-size:21px;line-height:1.2;font-weight:800;border:2px solid #333;border-radius:12px;background:#fff;color:#222;box-shadow:0 3px 0 #333;font-family:inherit}
+#choices button:active{transform:translateY(3px);box-shadow:0 0 0 #333}
+#choices button.ok{background:#bfe8c9}
+#choices button.ng{background:#f5b5b5}
+#choices button:disabled{opacity:1;box-shadow:0 3px 0 #333}
+#choices button.dim{opacity:.55}
+.panel{position:fixed;left:20px;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.94);border:2px solid #333;border-radius:12px;padding:18px;text-align:center;font-size:16px;line-height:1.6}
+#endtext{text-align:left;white-space:pre-wrap}
+#endscore{font-size:22px;font-weight:700;margin:0 0 8px}
+button.big{font-size:19px;font-weight:700;padding:12px 28px;border:2px solid #333;border-radius:10px;background:#ffe27a;color:#222}
+#note{position:fixed;right:6px;bottom:calc(env(safe-area-inset-bottom) + 4px);font-size:10px;color:#444;background:rgba(255,255,255,.6);padding:1px 4px;border-radius:4px;pointer-events:none}
+[hidden]{display:none!important}
+/* 背の低い画面(古い小型スマホ等)では問題パネルを詰めて、3Dの場面が見える高さを確保 */
+@media (max-height:700px){
+  #qpanel{gap:7px;bottom:calc(env(safe-area-inset-bottom) + 18px)}
+  #rx{padding:6px 10px 7px}
+  .rxhead{font-size:12px;margin-bottom:3px}
+  .rxrow{margin:2px 0;line-height:1.35}
+  #rxdis{font-size:19px}
+  #rxmemo{font-size:15px}
+  #choices{gap:7px}
+  #choices button{min-height:48px;font-size:19px}
+}
+/* 横向きで背の低い画面: 問題パネルを右側に縦に並べ、左側に場面を見せる */
+@media (orientation:landscape) and (max-height:500px){
+  #qpanel{left:auto;right:12px;width:min(44vw,420px);margin:0;gap:6px;bottom:calc(env(safe-area-inset-bottom) + 20px)}
+  #rx{padding:5px 10px 6px}
+  .rxhead{font-size:12px;margin-bottom:2px}
+  .rxrow{margin:1px 0;line-height:1.3}
+  #rxdis{font-size:18px}
+  #rxmemo{font-size:14px}
+  #rxres{font-size:15px}
+  #choices{gap:6px}
+  #choices button{min-height:44px;font-size:18px}
+}
